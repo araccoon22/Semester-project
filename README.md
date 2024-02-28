@@ -1,4 +1,4 @@
-# Semester project
+# Semester project at EPFL
 ## Comparative analysis of discrete choice models estimation using different software packages
 
 Since their establishment in the field of econometrics, discrete choice models have been extensively used
