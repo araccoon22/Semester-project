@@ -8,14 +8,6 @@ date: "2024-02-28"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# ################################################################# #
-#### LOAD LIBRARY AND DEFINE CORE SETTINGS                       ####
-# ################################################################# #
-
-### Clear memory
-rm(list = ls())
-
-
 
 
 
@@ -120,32 +112,26 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
 
 ```
 
-# ################################################################# #
-#### MODEL ESTIMATION                                            ####
-# ################################################################# #
+### Model Estimation and output
+
+```{r}
 
 model = apollo_estimate(apollo_beta, apollo_fixed, 
                         apollo_probabilities, apollo_inputs)
 
-# ################################################################# #
-#### MODEL OUTPUTS                                               ####
-# ################################################################# #
 
-# ----------------------------------------------------------------- #
-#---- FORMATTED OUTPUT (TO SCREEN)                               ----
-# ----------------------------------------------------------------- #
+## Model Output
 
-apollo_modelOutput(model)
+apollo_modelOutput(model) #Formatted output (to screen)
 
-# ----------------------------------------------------------------- #
-#---- FORMATTED OUTPUT (TO FILE, using model name)               ----
-# ----------------------------------------------------------------- #
+apollo_saveOutput(model) #formatted output (to file, using model name)
 
-apollo_saveOutput(model)
+```
 
-# ################################################################# #
-##### POST-PROCESSING                                            ####
-# ################################################################# #
+
+### Post processing                                         
+
+```{r}
 
 ### Print outputs of additional diagnostics to new output file (remember to close file writing when complete)
 apollo_sink()
@@ -158,3 +144,6 @@ apollo_deltaMethod(model,deltaMethod_settings = list(expression=c(b_no_frills="-
 # ----------------------------------------------------------------- #
 
 apollo_sink()
+
+```
+

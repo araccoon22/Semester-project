@@ -78,7 +78,7 @@ apollo_fixed = c("asc_car") #ASC that will not be estimated, should keep it empt
 
 apollo_inputs = apollo_validateInputs() #Searches the user work space (.GlobalEnv) for all necessary input to run apollo_estimate, and packs it in a single list.
 
-
+#specific to the model we estimate, user needs to define apollo_probabilities by themself
 apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimate"){
   
   ### Attach inputs and detach after function exit
