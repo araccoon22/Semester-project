@@ -1,0 +1,7 @@
+"0",""
+"0","### Print outputs of additional diagnostics to new output file (remember to close file writing when complete)"
+"0","apollo_sink()"
+"1","Writing output to file output/MNL_RP_SP_additional_output.txt. Please
+"
+"1","  run ""apollo_sink()"" again after finishing writing results.
+"

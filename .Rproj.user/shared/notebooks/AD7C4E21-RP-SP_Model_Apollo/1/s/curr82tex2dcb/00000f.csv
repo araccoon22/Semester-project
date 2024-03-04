@@ -1,0 +1,5 @@
+"0","database = apollo_modeChoiceData"
+"0",""
+"0","### Create new variable with average income"
+"0","database$mean_income = mean(database$income)"
+"0",""

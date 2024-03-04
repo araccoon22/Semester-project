@@ -1,0 +1,43 @@
+"0",""
+"0","### Clear memory"
+"0","rm(list = ls())"
+"0",""
+"0","### Load Apollo library"
+"0","library(apollo)"
+"2","[38;5;38m
+
+             . ,,                                                            
+            ,      ,,                                                        
+ ,,,,,,    ,         ,,                                                      
+,     ,,  ,            ,,,,.                                                 
+,,     , ,,   ,,,,,,    ,,,                                 //  //           
+  ,     ,,,.   ,,,,,.   ,,      ////                        //  //           
+,,     ,,,,,.           ,,     // //     //////    /////    //  //    /////  
+,,,        ,,           ,      //  //    /    //  //   //   //  //   //   // 
+              ,,       ,      ////////   /    //  //   //   //  //   //   // 
+                ,,   ,,      //     //   /   ///  //   //   //  //   //   // 
+                   ,         //      //  /////      ///      //  //    ///   
+                                         //                                  
+                                         //                                  
+
+Apollo 0.3.1
+http://www.ApolloChoiceModelling.com
+See url for a detailed manual, examples and a user forum.
+Sign up to the user forum to receive updates on new releases.
+
+Please cite Apollo in all written material you produce:
+Hess S, Palma D (2019). ""Apollo: a flexible, powerful and customisable
+freeware package for choice model estimation and application."" Journal
+of Choice Modelling, 32. doi:10.1016/j.jocm.2019.100170[39m
+"
+"0","### Initialise code"
+"0","apollo_initialise()"
+"1","Apollo ignition sequence completed
+"
+"0","### Set core controls"
+"0","apollo_control = list("
+"0","  modelName       = ""MNL_RP_SP"","
+"0","  modelDescr      = ""RP-SP model on mode choice data"","
+"0","  indivID         = ""ID"", "
+"0","  outputDirectory = ""output"""
+"0",")"
