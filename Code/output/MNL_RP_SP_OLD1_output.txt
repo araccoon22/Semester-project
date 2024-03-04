@@ -1,0 +1,203 @@
+Model run by alexi using Apollo 0.3.1 on R 4.2.3 for Windows.
+Please acknowledge the use of Apollo by citing Hess & Palma (2019)
+  DOI 10.1016/j.jocm.2019.100170
+  www.ApolloChoiceModelling.com
+
+Model name                                  : MNL_RP_SP
+Model description                           : RP-SP model on mode choice data
+Model run at                                : 2024-03-04 11:24:20
+Estimation method                           : bgw
+Model diagnosis                             : Relative function convergence
+Optimisation diagnosis                      : Maximum found
+     hessian properties                     : Negative definite
+     maximum eigenvalue                     : -12.026756
+     reciprocal of condition number         : 3.03709e-08
+Number of individuals                       : 500
+Number of rows in database                  : 8000
+Number of modelled outcomes                 : 8000
+                              RP : 1000
+                              SP : 7000
+
+Number of cores used                        :  1 
+Model without mixing
+
+LL(start)                                   : -9366.88
+LL (whole model) at equal shares, LL(0)     : -9366.88
+LL (whole model) at observed shares, LL(C)  : -7792.08
+LL(final, whole model)                      : -5802.64
+Rho-squared vs equal shares                  :  0.3805 
+Adj.Rho-squared vs equal shares              :  0.3786 
+Rho-squared vs observed shares               :  0.2553 
+Adj.Rho-squared vs observed shares           :  0.2538 
+AIC                                         :  11641.29 
+BIC                                         :  11729.63 
+
+LL(0,RP)                         : -1170.86
+LL(final,RP)                     : -971.24
+LL(0,SP)                         : -8196.02
+LL(final,SP)                     : -4831.4
+
+Estimated parameters                        : 18
+Time taken (hh:mm:ss)                       :  00:00:18.05 
+     pre-estimation                         :  00:00:3.24 
+     estimation                             :  00:00:4.82 
+          initial estimation                :  00:00:4.19 
+          estimation after rescaling        :  00:00:0.63 
+     post-estimation                        :  00:00:10 
+Iterations                                  :  13  
+     initial estimation                     :  12 
+     estimation after rescaling             :  1 
+
+Unconstrained optimisation.
+
+Estimates:
+
+
+Overview of choices for MNL model component RP:
+                                    car    bus    air   rail
+Times available                  778.00 902.00 752.00 874.00
+Times chosen                     332.00 126.00 215.00 327.00
+Percentage chosen overall         33.20  12.60  21.50  32.70
+Percentage chosen when available  42.67  13.97  28.59  37.41
+
+
+
+Overview of choices for MNL model component SP:
+                                     car     bus     air    rail
+Times available                  5446.00 6314.00 5264.00 6118.00
+Times chosen                     1946.00  358.00 1522.00 3174.00
+Percentage chosen overall          27.80    5.11   21.74   45.34
+Percentage chosen when available   35.73    5.67   28.91   51.88
+
+
+
+Classical covariance matrix:
+
+Robust covariance matrix:
+
+Classical correlation matrix:
+
+Robust correlation matrix:
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+
+Changes in parameter estimates from starting values:
+
+Settings and functions used in model definition:
+
+apollo_control
+--------------
+                       Value                            
+modelName              "MNL_RP_SP"                      
+modelDescr             "RP-SP model on mode choice data"
+indivID                "ID"                             
+outputDirectory        "output/"                        
+debug                  "FALSE"                          
+nCores                 "1"                              
+workInLogs             "FALSE"                          
+seed                   "13"                             
+mixing                 "FALSE"                          
+HB                     "FALSE"                          
+noValidation           "FALSE"                          
+noDiagnostics          "FALSE"                          
+calculateLLC           "TRUE"                           
+panelData              "TRUE"                           
+analyticGrad           "TRUE"                           
+analyticGrad_manualSet "FALSE"                          
+overridePanel          "FALSE"                          
+preventOverridePanel   "FALSE"                          
+noModification         "FALSE"                          
+
+Hessian routines attempted
+--------------------------
+numerical jacobian of LL analytical gradient
+
+Scaling used in computing Hessian
+---------------------------------
+                            Value
+asc_bus               0.124828179
+asc_air               0.396091665
+asc_rail              0.978692129
+asc_bus_shift_female  0.181339675
+asc_air_shift_female  0.134504263
+asc_rail_shift_female 0.098188399
+b_tt_car              0.006424552
+b_tt_bus              0.010506881
+b_tt_air              0.008667770
+b_tt_rail             0.003837861
+b_tt_shift_business   0.003202838
+b_access              0.010545294
+b_cost                0.038233950
+b_cost_shift_business 0.016656641
+cost_income_elast     0.613149538
+b_wifi                0.523123276
+b_food                0.220073641
+mu_SP                 1.994743513
+
+
+apollo_probabilities
+----------------------
+function(apollo_beta, apollo_inputs, functionality="estimate"){
+
+  ### Attach inputs and detach after function exit
+  apollo_attach(apollo_beta, apollo_inputs)
+  on.exit(apollo_detach(apollo_beta, apollo_inputs))
+
+  ### Create list of probabilities P
+  P = list()
+
+  ### Create alternative specific constants and coefficients using interactions with socio-demographics
+  asc_bus_value   = asc_bus  + asc_bus_shift_female * female
+  asc_air_value   = asc_air  + asc_air_shift_female * female
+  asc_rail_value  = asc_rail + asc_rail_shift_female * female
+  b_tt_car_value  = b_tt_car + b_tt_shift_business * business
+  b_tt_bus_value  = b_tt_bus + b_tt_shift_business * business
+  b_tt_air_value  = b_tt_air + b_tt_shift_business * business
+  b_tt_rail_value = b_tt_rail + b_tt_shift_business * business
+  b_cost_value    = ( b_cost +  b_cost_shift_business * business ) * ( income / mean_income ) ^ cost_income_elast
+
+  ### List of utilities (before applying scales): these must use the same names as in mnl_settings, order is irrelevant
+  V = list()
+  V[["car"]]  = asc_car        + b_tt_car_value  * time_car                           + b_cost_value * cost_car
+  V[["bus"]]  = asc_bus_value  + b_tt_bus_value  * time_bus  + b_access * access_bus  + b_cost_value * cost_bus 
+  V[["air"]]  = asc_air_value  + b_tt_air_value  * time_air  + b_access * access_air  + b_cost_value * cost_air   + b_no_frills * ( service_air == 1 )  + b_wifi * ( service_air == 2 )  + b_food * ( service_air == 3 )
+  V[["rail"]] = asc_rail_value + b_tt_rail_value * time_rail + b_access * access_rail + b_cost_value * cost_rail  + b_no_frills * ( service_rail == 1 ) + b_wifi * ( service_rail == 2 ) + b_food * ( service_rail == 3 )
+
+  ### Compute probabilities for the RP part of the data using MNL model
+  mnl_settings_RP = list(
+       alternatives  = c(car=1, bus=2, air=3, rail=4), 
+       avail         = list(car=av_car, bus=av_bus, air=av_air, rail=av_rail), 
+       choiceVar     = choice, 
+       utilities     = list(car  = mu_RP*V[["car"]],
+                            bus  = mu_RP*V[["bus"]],
+                            air  = mu_RP*V[["air"]],
+                            rail = mu_RP*V[["rail"]]),
+       rows          = (RP==1)
+  )
+  
+  P[["RP"]] = apollo_mnl(mnl_settings_RP, functionality)
+
+  ### Compute probabilities for the SP part of the data using MNL model
+  mnl_settings_SP = list(
+       alternatives  = c(car=1, bus=2, air=3, rail=4), 
+       avail         = list(car=av_car, bus=av_bus, air=av_air, rail=av_rail), 
+       choiceVar     = choice, 
+       utilities     = list(car  = mu_SP*V[["car"]],
+                            bus  = mu_SP*V[["bus"]],
+                            air  = mu_SP*V[["air"]],
+                            rail = mu_SP*V[["rail"]]),
+       rows          = (SP==1)
+  )
+  
+  P[["SP"]] = apollo_mnl(mnl_settings_SP, functionality)
+
+  ### Combined model
+  P = apollo_combineModels(P, apollo_inputs, functionality)
+  
+  ### Take product across observation for same individual
+  P = apollo_panelProd(P, apollo_inputs, functionality)
+
+  ### Prepare and return outputs of function
+  P = apollo_prepareProb(P, apollo_inputs, functionality)
+  return(P)
+}

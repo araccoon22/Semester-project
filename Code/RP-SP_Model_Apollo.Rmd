@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 Our first resource is a synthetic dataset looking at mode choice for 500 travellers. For each individual, the data contains two revealed preference (RP) inter-city trips, where the possible modes were car, bus, air and rail, and where each individual has at least two of these four modes available to them. The journey options are described on the basis of access time (except for car), travel time and cost, with times in minutes, and costs in $. The data then also contains 14 stated preference (SP) tasks per person, using the same alternatives as those available on the RP journey for that person, but with an additional categorical quality of service attribute added in for air and rail, taking three levels, namely no frills, wifi available, or food available. For each individual, the dataset also contains information on gender, whether the journey was a business trip or not, and the individual’s income.
 
-## LOAD LIBRARY AND DEFINE CORE SETTINGS                      
+### LOAD LIBRARY AND DEFINE CORE SETTINGS                      
 
 ```{r}
 
@@ -31,7 +31,7 @@ apollo_control = list(
 )
 ```
 
-## LOADING DATA 
+### LOADING DATA 
 
 ```{r}
 database = apollo_modeChoiceData
@@ -41,7 +41,7 @@ database$mean_income = mean(database$income)
 
 ```
 
-##DEFINE PARAMETERS
+### DEFINE PARAMETERS
 
 ```{r}
 
@@ -73,7 +73,7 @@ apollo_fixed = c("asc_car","b_no_frills","mu_RP")
 
 ```
 
-## GROUP AND VALIDATE INPUTS
+### GROUP AND VALIDATE INPUTS
 
 ```{r}
 apollo_inputs = apollo_validateInputs()
@@ -149,7 +149,7 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
 
 ```
 
-## MODEL ESTIMATION + OUTPUTS
+### MODEL ESTIMATION + OUTPUTS
 
 ```{r}
 model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_inputs)
@@ -164,7 +164,7 @@ apollo_saveOutput(model)
 
 ```
 
-## POST-PROCESSING                                           
+### POST-PROCESSING                                           
 
 ```{r}
 
@@ -174,7 +174,7 @@ apollo_sink()
 
 
 
-## MODEL PREDICTIONS AND ELASTICITY CALCULATIONS 
+### MODEL PREDICTIONS AND ELASTICITY CALCULATIONS 
 
 ```{r}
 ### RP elasticities
