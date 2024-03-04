@@ -1,0 +1,9 @@
+"0","apollo_inputs = apollo_validateInputs()"
+"1","Several observations per individual detected based on the value of ID.
+"
+"1","  Setting panelData in apollo_control set to TRUE.
+"
+"1","All checks on apollo_control completed.
+"
+"1","All checks on database completed.
+"
