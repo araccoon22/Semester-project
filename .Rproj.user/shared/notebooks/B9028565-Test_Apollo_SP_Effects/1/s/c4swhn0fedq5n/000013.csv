@@ -1,0 +1,16 @@
+"1","INFORMATION:"
+"1"," "
+"1","The results of the Delta method calculations are returned insibly as
+  an output from this function. Calling the function via
+  result=apollo_deltaMethod(...) will save this output in an object
+  called result (or otherwise named object)."
+"1"," "
+"1","
+"
+"0","# ----------------------------------------------------------------- #"
+"0","#---- switch off writing to file                                 ----"
+"0","# ----------------------------------------------------------------- #"
+"0",""
+"0","apollo_sink()"
+"1","Output is no longer being written to file.
+"
