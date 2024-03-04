@@ -77,11 +77,12 @@ apollo_fixed = c("asc_car","b_no_frills","mu_RP")
 
 ```{r}
 apollo_inputs = apollo_validateInputs()
+```
 
-# ################################################################# #
-#### DEFINE MODEL AND LIKELIHOOD FUNCTION                        ####
-# ################################################################# #
 
+# DEFINE MODEL AND LIKELIHOOD FUNCTION  
+
+```{r}
 apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimate"){
 
   ### Attach inputs and detach after function exit
