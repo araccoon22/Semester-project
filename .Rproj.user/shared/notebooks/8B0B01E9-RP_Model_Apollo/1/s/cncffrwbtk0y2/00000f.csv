@@ -1,6 +1,0 @@
-"0",""
-"0","### if data is to be loaded from a file (e.g. called data.csv), "
-"0","### the code would be: database = read.csv(""data.csv"",header=TRUE)"
-"0",""
-"0","database = apollo_modeChoiceData #simulated dataset, 8'000 rows, 26 variables (25 + id)"
-"0","database #long format"
