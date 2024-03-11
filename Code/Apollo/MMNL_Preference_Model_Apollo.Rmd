@@ -8,6 +8,8 @@ date: "2024-03-11"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+### Data description
+Mixed logit model on Swiss route choice data, uncorrelated Lognormals in preference space
 ###LOAD LIBRARY AND DEFINE CORE SETTINGS                     
 
 ```{r}
@@ -47,6 +49,7 @@ database = apollo_swissRouteChoiceData
 ```{r}
 ### Note this is unlabelled data, so we are doing this for an illustration of cheap vs expensive
 ### Define settings for analysis of choice data to be conducted prior to model estimation
+
 choiceAnalysis_settings <- list(
   alternatives = c(cheap=1, expensive=2),
   choiceVar    = (1*((database$choice==1)*(database$tc1<=database$tc2)+(database$choice==2)*(database$tc1>=database$tc2))
@@ -75,10 +78,12 @@ apollo_beta = c(mu_log_b_tt    = -3,
 ### Vector with names (in quotes) of parameters to be kept fixed at their starting value in apollo_beta, use apollo_beta_fixed = c() if none
 apollo_fixed = c()
 
-# ################################################################# #
-#### DEFINE RANDOM COMPONENTS                                    ####
-# ################################################################# #
+```
 
+
+### DEFINE RANDOM COMPONENTS 
+
+```{r}
 ### Set parameters for generating draws
 apollo_draws = list(
   interDrawsType = "halton",
@@ -102,6 +107,8 @@ apollo_randCoeff = function(apollo_beta, apollo_inputs){
 
   return(randcoeff)
 }
+
+
 
 ```
 
