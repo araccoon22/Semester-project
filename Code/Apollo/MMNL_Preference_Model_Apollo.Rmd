@@ -109,7 +109,6 @@ apollo_randCoeff = function(apollo_beta, apollo_inputs){
 }
 
 
-
 ```
 
 ### GROUP AND VALIDATE INPUTS
@@ -164,6 +163,7 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
 ### MODEL ESTIMATION
 
 ```{r}
+
 model = apollo_estimate(apollo_beta, apollo_fixed,apollo_probabilities, apollo_inputs)
 ```
 
