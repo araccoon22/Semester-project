@@ -5,7 +5,7 @@ Please acknowledge the use of Apollo by citing Hess & Palma (2019)
 
 Model name                                  : MNL_RP
 Model description                           : Simple MNL model on mode choice RP data
-Model run at                                : 2024-03-07 11:32:06
+Model run at                                : 2024-03-19 14:22:17
 Estimation method                           : bgw
 Model diagnosis                             : Relative function convergence
 Optimisation diagnosis                      : Maximum found
@@ -31,12 +31,12 @@ AIC                                         :  2069.51
 BIC                                         :  2113.68 
 
 Estimated parameters                        : 9
-Time taken (hh:mm:ss)                       :  00:00:0.69 
-     pre-estimation                         :  00:00:0.19 
-     estimation                             :  00:00:0.14 
-          initial estimation                :  00:00:0.11 
-          estimation after rescaling        :  00:00:0.03 
-     post-estimation                        :  00:00:0.36 
+Time taken (hh:mm:ss)                       :  00:00:0.66 
+     pre-estimation                         :  00:00:0.41 
+     estimation                             :  00:00:0.08 
+          initial estimation                :  00:00:0.06 
+          estimation after rescaling        :  00:00:0.02 
+     post-estimation                        :  00:00:0.18 
 Iterations                                  :  9  
      initial estimation                     :  8 
      estimation after rescaling             :  1 
@@ -44,6 +44,17 @@ Iterations                                  :  9
 Unconstrained optimisation.
 
 Estimates:
+             Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
+asc_car      0.000000          NA          NA          NA            NA
+asc_bus      0.474677    1.018672      0.4660    0.990600        0.4792
+asc_air      1.629073    0.827435      1.9688    0.817513        1.9927
+asc_rail     0.944533    0.803551      1.1754    0.795160        1.1879
+b_tt_car    -0.003646    0.001555     -2.3455    0.001568       -2.3251
+b_tt_bus    -0.008846    0.002624     -3.3711    0.002616       -3.3815
+b_tt_air    -0.020685    0.006599     -3.1346    0.006424       -3.2202
+b_tt_rail   -0.011239    0.004386     -2.5626    0.004468       -2.5157
+b_access    -0.011466    0.006430     -1.7832    0.006297       -1.8210
+b_cost      -0.033947    0.003295    -10.3035    0.003180      -10.6755
 
 
 Overview of choices for MNL model component :
@@ -56,16 +67,128 @@ Percentage chosen when available  42.67  13.97  28.59  37.41
 
 
 Classical covariance matrix:
+              asc_bus     asc_air    asc_rail    b_tt_car    b_tt_bus
+asc_bus      1.037693    0.202767    0.172024  5.6464e-04   -0.002324
+asc_air      0.202767    0.684649    0.263731  7.4623e-04  1.6769e-04
+asc_rail     0.172024    0.263731    0.645694  7.6548e-04  1.7276e-04
+b_tt_car   5.6464e-04  7.4623e-04  7.6548e-04   2.416e-06   5.258e-07
+b_tt_bus    -0.002324  1.6769e-04  1.7276e-04   5.258e-07   6.886e-06
+b_tt_air   -7.511e-05   -0.004045 -1.7624e-04  -4.517e-07  -4.708e-07
+b_tt_rail   8.596e-05  1.6027e-04   -0.002788  -2.301e-07  -1.662e-07
+b_access  -4.1818e-04   -0.003063  -8.856e-05  -9.328e-08  -3.529e-07
+b_cost     -1.623e-05 -5.9668e-04 -2.4112e-04   9.375e-07   1.241e-06
+             b_tt_air   b_tt_rail    b_access      b_cost
+asc_bus    -7.511e-05   8.596e-05 -4.1818e-04  -1.623e-05
+asc_air     -0.004045  1.6027e-04   -0.003063 -5.9668e-04
+asc_rail  -1.7624e-04   -0.002788  -8.856e-05 -2.4112e-04
+b_tt_car   -4.517e-07  -2.301e-07  -9.328e-08   9.375e-07
+b_tt_bus   -4.708e-07  -1.662e-07  -3.529e-07   1.241e-06
+b_tt_air    4.355e-05  -1.739e-06   1.462e-05   5.352e-06
+b_tt_rail  -1.739e-06   1.924e-05  -4.075e-06   2.344e-06
+b_access    1.462e-05  -4.075e-06   4.134e-05   2.828e-06
+b_cost      5.352e-06   2.344e-06   2.828e-06   1.086e-05
 
 Robust covariance matrix:
+              asc_bus     asc_air    asc_rail    b_tt_car    b_tt_bus
+asc_bus      0.981289    0.194391    0.119591  4.8954e-04   -0.002220
+asc_air      0.194391    0.668328    0.246693  7.5673e-04  2.1771e-04
+asc_rail     0.119591    0.246693    0.632280  7.0636e-04  2.9497e-04
+b_tt_car   4.8954e-04  7.5673e-04  7.0636e-04   2.459e-06   8.166e-07
+b_tt_bus    -0.002220  2.1771e-04  2.9497e-04   8.166e-07   6.844e-06
+b_tt_air  -2.7852e-04   -0.003775   4.547e-06  -2.712e-07   2.123e-07
+b_tt_rail  3.0780e-04  3.0675e-04   -0.002766   3.139e-07  -4.117e-07
+b_access  -3.1143e-04   -0.003090 -4.4491e-04  -5.372e-07  -9.655e-07
+b_cost     -4.001e-05 -5.4452e-04 -1.6803e-04   1.063e-06   1.277e-06
+             b_tt_air   b_tt_rail    b_access      b_cost
+asc_bus   -2.7852e-04  3.0780e-04 -3.1143e-04  -4.001e-05
+asc_air     -0.003775  3.0675e-04   -0.003090 -5.4452e-04
+asc_rail    4.547e-06   -0.002766 -4.4491e-04 -1.6803e-04
+b_tt_car   -2.712e-07   3.139e-07  -5.372e-07   1.063e-06
+b_tt_bus    2.123e-07  -4.117e-07  -9.655e-07   1.277e-06
+b_tt_air    4.126e-05  -2.525e-06   1.364e-05   4.559e-06
+b_tt_rail  -2.525e-06   1.996e-05  -2.321e-06   1.968e-06
+b_access    1.364e-05  -2.321e-06   3.965e-05   4.018e-06
+b_cost      4.559e-06   1.968e-06   4.018e-06   1.011e-05
 
 Classical correlation matrix:
+              asc_bus     asc_air    asc_rail    b_tt_car    b_tt_bus
+asc_bus      1.000000     0.24056     0.21016    0.356572    -0.86928
+asc_air      0.240564     1.00000     0.39666    0.580156     0.07723
+asc_rail     0.210156     0.39666     1.00000    0.612818     0.08193
+b_tt_car     0.356572     0.58016     0.61282    1.000000     0.12891
+b_tt_bus    -0.869282     0.07723     0.08193    0.128909     1.00000
+b_tt_air    -0.011174    -0.74086    -0.03324   -0.044037    -0.02719
+b_tt_rail    0.019239     0.04416    -0.79114   -0.033754    -0.01444
+b_access    -0.063845    -0.57563    -0.01714   -0.009332    -0.02092
+b_cost      -0.004835    -0.21887    -0.09107    0.183049     0.14354
+             b_tt_air   b_tt_rail    b_access      b_cost
+asc_bus      -0.01117     0.01924   -0.063845   -0.004835
+asc_air      -0.74086     0.04416   -0.575631   -0.218873
+asc_rail     -0.03324    -0.79114   -0.017140   -0.091075
+b_tt_car     -0.04404    -0.03375   -0.009332    0.183049
+b_tt_bus     -0.02719    -0.01444   -0.020915    0.143544
+b_tt_air      1.00000    -0.06008    0.344585    0.246159
+b_tt_rail    -0.06008     1.00000   -0.144482    0.162236
+b_access      0.34458    -0.14448    1.000000    0.133489
+b_cost        0.24616     0.16224    0.133489    1.000000
 
 Robust correlation matrix:
+              asc_bus     asc_air    asc_rail    b_tt_car    b_tt_bus
+asc_bus       1.00000     0.24004     0.15183     0.31514    -0.85671
+asc_air       0.24004     1.00000     0.37950     0.59029     0.10180
+asc_rail      0.15183     0.37950     1.00000     0.56648     0.14180
+b_tt_car      0.31514     0.59029     0.56648     1.00000     0.19905
+b_tt_bus     -0.85671     0.10180     0.14180     0.19905     1.00000
+b_tt_air     -0.04377    -0.71883  8.9017e-04    -0.02692     0.01264
+b_tt_rail     0.06955     0.08399    -0.77869     0.04480    -0.03522
+b_access     -0.04993    -0.60034    -0.08886    -0.05440    -0.05861
+b_cost       -0.01270    -0.20946    -0.06645     0.21320     0.15356
+             b_tt_air   b_tt_rail    b_access      b_cost
+asc_bus      -0.04377     0.06955    -0.04993    -0.01270
+asc_air      -0.71883     0.08399    -0.60034    -0.20946
+asc_rail   8.9017e-04    -0.77869    -0.08886    -0.06645
+b_tt_car     -0.02692     0.04480    -0.05440     0.21320
+b_tt_bus      0.01264    -0.03522    -0.05861     0.15356
+b_tt_air      1.00000    -0.08798     0.33722     0.22318
+b_tt_rail    -0.08798     1.00000    -0.08252     0.13854
+b_access      0.33722    -0.08252     1.00000     0.20068
+b_cost        0.22318     0.13854     0.20068     1.00000
 
  20 worst outliers in terms of lowest average per choice prediction:
+  ID Avg prob per choice
+ 227          0.09402487
+ 166          0.10679212
+ 253          0.11808379
+ 462          0.12224796
+ 112          0.12893233
+   2          0.13175140
+ 317          0.13889446
+ 381          0.14516202
+ 267          0.14935516
+ 231          0.15478068
+  86          0.15515133
+ 300          0.15877794
+  43          0.15898097
+ 453          0.16107163
+ 417          0.16181189
+ 125          0.16343251
+  76          0.16384990
+ 287          0.16583635
+  35          0.16655658
+ 413          0.16790013
 
 Changes in parameter estimates from starting values:
+              Initial    Estimate  Difference
+asc_car         0.000    0.000000    0.000000
+asc_bus         0.000    0.474677    0.474677
+asc_air         0.000    1.629073    1.629073
+asc_rail        0.000    0.944533    0.944533
+b_tt_car        0.000   -0.003646   -0.003646
+b_tt_bus        0.000   -0.008846   -0.008846
+b_tt_air        0.000   -0.020685   -0.020685
+b_tt_rail       0.000   -0.011239   -0.011239
+b_access        0.000   -0.011466   -0.011466
+b_cost          0.000   -0.033947   -0.033947
 
 Settings and functions used in model definition:
 
