@@ -5,7 +5,7 @@ Please acknowledge the use of Apollo by citing Hess & Palma (2019)
 
 Model name                                  : MMNL_preference_space
 Model description                           : Mixed logit model on Swiss route choice data, uncorrelated Lognormals in preference space
-Model run at                                : 2024-03-27 10:50:48
+Model run at                                : 2024-03-27 11:27:05
 Estimation method                           : bgw
 Model diagnosis                             : Relative function convergence
 Optimisation diagnosis                      : Maximum found
@@ -31,12 +31,12 @@ AIC                                         :  2904.7
 BIC                                         :  2953.97 
 
 Estimated parameters                        : 8
-Time taken (hh:mm:ss)                       :  00:03:25.65 
-     pre-estimation                         :  00:00:55.57 
-     estimation                             :  00:00:56.37 
-          initial estimation                :  00:00:48.32 
-          estimation after rescaling        :  00:00:8.05 
-     post-estimation                        :  00:01:33.72 
+Time taken (hh:mm:ss)                       :  00:03:31.57 
+     pre-estimation                         :  00:00:55.01 
+     estimation                             :  00:00:57.78 
+          initial estimation                :  00:00:49.5 
+          estimation after rescaling        :  00:00:8.28 
+     post-estimation                        :  00:01:38.77 
 Iterations                                  :  18  
      initial estimation                     :  17 
      estimation after rescaling             :  1 
@@ -44,15 +44,6 @@ Iterations                                  :  18
 Unconstrained optimisation.
 
 Estimates:
-                  Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
-mu_log_b_tt        -1.9838     0.08758     -22.650     0.11524       -17.214
-sigma_log_b_tt     -0.4416     0.07066      -6.251     0.06775        -6.518
-mu_log_b_tc        -1.0158     0.13222      -7.682     0.17146        -5.924
-sigma_log_b_tc     -0.9913     0.08189     -12.106     0.07042       -14.077
-mu_log_b_hw        -2.9378     0.08559     -34.324     0.09170       -32.038
-sigma_log_b_hw     -0.8344     0.11076      -7.533     0.12242        -6.816
-mu_log_b_ch         0.6312     0.07414       8.513     0.08224         7.675
-sigma_log_b_ch      0.8578     0.09735       8.812     0.09809         8.745
 
 
 Overview of choices for MNL model component :
@@ -65,118 +56,16 @@ Percentage chosen when available   49.66   50.34
 
 
 Classical covariance matrix:
-                  mu_log_b_tt sigma_log_b_tt    mu_log_b_tc sigma_log_b_tc
-mu_log_b_tt          0.007671       0.002220       0.008301       0.002044
-sigma_log_b_tt       0.002220       0.004992       0.002002     4.2046e-04
-mu_log_b_tc          0.008301       0.002002       0.017482       0.005300
-sigma_log_b_tc       0.002044     4.2046e-04       0.005300       0.006706
-mu_log_b_hw          0.001840    -2.1812e-04       0.002384    -4.3880e-04
-sigma_log_b_hw      -0.001449    -8.1285e-04      -0.001828     5.2771e-04
-mu_log_b_ch          0.002175    -5.1675e-04       0.002312    -2.1956e-04
-sigma_log_b_ch       0.001375     -3.198e-05       0.001911    -1.5817e-04
-                  mu_log_b_hw sigma_log_b_hw    mu_log_b_ch sigma_log_b_ch
-mu_log_b_tt          0.001840      -0.001449       0.002175       0.001375
-sigma_log_b_tt    -2.1812e-04    -8.1285e-04    -5.1675e-04     -3.198e-05
-mu_log_b_tc          0.002384      -0.001828       0.002312       0.001911
-sigma_log_b_tc    -4.3880e-04     5.2771e-04    -2.1956e-04    -1.5817e-04
-mu_log_b_hw          0.007326       0.002428       0.001352     6.7170e-04
-sigma_log_b_hw       0.002428       0.012268      -0.001332      -0.001056
-mu_log_b_ch          0.001352      -0.001332       0.005497     1.2947e-04
-sigma_log_b_ch     6.7170e-04      -0.001056     1.2947e-04       0.009476
 
 Robust covariance matrix:
-                  mu_log_b_tt sigma_log_b_tt    mu_log_b_tc sigma_log_b_tc
-mu_log_b_tt          0.013281       0.003830       0.017046       0.003789
-sigma_log_b_tt       0.003830       0.004590       0.006188       0.001728
-mu_log_b_tc          0.017046       0.006188       0.029398       0.006639
-sigma_log_b_tc       0.003789       0.001728       0.006639       0.004959
-mu_log_b_hw          0.004246     7.1946e-04       0.005786     -1.031e-05
-sigma_log_b_hw      -0.001979      -0.001511      -0.003920     4.5959e-04
-mu_log_b_ch          0.004933     1.4386e-04       0.006060     5.6696e-04
-sigma_log_b_ch       0.001435      1.438e-05       0.002978    -2.6879e-04
-                  mu_log_b_hw sigma_log_b_hw    mu_log_b_ch sigma_log_b_ch
-mu_log_b_tt          0.004246      -0.001979       0.004933       0.001435
-sigma_log_b_tt     7.1946e-04      -0.001511     1.4386e-04      1.438e-05
-mu_log_b_tc          0.005786      -0.003920       0.006060       0.002978
-sigma_log_b_tc     -1.031e-05     4.5959e-04     5.6696e-04    -2.6879e-04
-mu_log_b_hw          0.008409       0.001997       0.003343     2.3885e-04
-sigma_log_b_hw       0.001997       0.014986      -0.001179      -0.002662
-mu_log_b_ch          0.003343      -0.001179       0.006763     -1.841e-05
-sigma_log_b_ch     2.3885e-04      -0.002662     -1.841e-05       0.009621
 
 Classical correlation matrix:
-                  mu_log_b_tt sigma_log_b_tt    mu_log_b_tc sigma_log_b_tc
-mu_log_b_tt            1.0000       0.358763         0.7168        0.28505
-sigma_log_b_tt         0.3588       1.000000         0.2143        0.07267
-mu_log_b_tc            0.7168       0.214319         1.0000        0.48954
-sigma_log_b_tc         0.2851       0.072670         0.4895        1.00000
-mu_log_b_hw            0.2454      -0.036067         0.2106       -0.06261
-sigma_log_b_hw        -0.1494      -0.103864        -0.1248        0.05818
-mu_log_b_ch            0.3350      -0.098640         0.2358       -0.03616
-sigma_log_b_ch         0.1613      -0.004649         0.1485       -0.01984
-                  mu_log_b_hw sigma_log_b_hw    mu_log_b_ch sigma_log_b_ch
-mu_log_b_tt           0.24542       -0.14936        0.33501       0.161281
-sigma_log_b_tt       -0.03607       -0.10386       -0.09864      -0.004649
-mu_log_b_tc           0.21063       -0.12483        0.23584       0.148488
-sigma_log_b_tc       -0.06261        0.05818       -0.03616      -0.019843
-mu_log_b_hw           1.00000        0.25609        0.21305       0.080617
-sigma_log_b_hw        0.25609        1.00000       -0.16216      -0.097902
-mu_log_b_ch           0.21305       -0.16216        1.00000       0.017939
-sigma_log_b_ch        0.08062       -0.09790        0.01794       1.000000
 
 Robust correlation matrix:
-                  mu_log_b_tt sigma_log_b_tt    mu_log_b_tc sigma_log_b_tc
-mu_log_b_tt            1.0000       0.490544         0.8627       0.466879
-sigma_log_b_tt         0.4905       1.000000         0.5326       0.362256
-mu_log_b_tc            0.8627       0.532649         1.0000       0.549884
-sigma_log_b_tc         0.4669       0.362256         0.5499       1.000000
-mu_log_b_hw            0.4018       0.115800         0.3680      -0.001597
-sigma_log_b_hw        -0.1402      -0.182115        -0.1867       0.053312
-mu_log_b_ch            0.5205       0.025818         0.4298       0.097897
-sigma_log_b_ch         0.1270       0.002164         0.1771      -0.038913
-                  mu_log_b_hw sigma_log_b_hw    mu_log_b_ch sigma_log_b_ch
-mu_log_b_tt          0.401801       -0.14025       0.520507       0.126958
-sigma_log_b_tt       0.115800       -0.18211       0.025818       0.002164
-mu_log_b_tc          0.368032       -0.18674       0.429783       0.177069
-sigma_log_b_tc      -0.001597        0.05331       0.097897      -0.038913
-mu_log_b_hw          1.000000        0.17790       0.443263       0.026555
-sigma_log_b_hw       0.177900        1.00000      -0.117112      -0.221677
-mu_log_b_ch          0.443263       -0.11711       1.000000      -0.002282
-sigma_log_b_ch       0.026555       -0.22168      -0.002282       1.000000
 
  20 worst outliers in terms of lowest average per choice prediction:
-    ID Avg prob per choice
- 15174           0.2538023
- 16178           0.2607619
- 22580           0.2725663
- 23205           0.2735156
- 21623           0.2943617
- 76862           0.3253531
- 16489           0.3459651
- 12534           0.3459813
- 21922           0.3484378
- 16184           0.3674511
- 15056           0.3674657
- 24627           0.3749767
- 22820           0.3770633
- 16617           0.3802213
- 20100           0.3820500
- 15312           0.3838228
- 22961           0.3868107
- 14754           0.3901872
- 17187           0.4030782
- 17645           0.4052704
 
 Changes in parameter estimates from starting values:
-                   Initial    Estimate  Difference
-mu_log_b_tt       -3.00000     -1.9838     1.01618
-sigma_log_b_tt    -0.01000     -0.4416    -0.43164
-mu_log_b_tc       -3.00000     -1.0158     1.98423
-sigma_log_b_tc    -0.01000     -0.9913    -0.98130
-mu_log_b_hw       -3.00000     -2.9378     0.06215
-sigma_log_b_hw    -0.01000     -0.8344    -0.82443
-mu_log_b_ch       -3.00000      0.6312     3.63116
-sigma_log_b_ch    -0.01000      0.8578     0.86782
 
 Settings and functions used in model definition:
 
@@ -232,7 +121,7 @@ function(apollo_beta, apollo_inputs){
 
   return(randcoeff)
 }
-<bytecode: 0x0000028a55765c90>
+<bytecode: 0x0000011c5ab24c60>
 
 
 apollo_probabilities
