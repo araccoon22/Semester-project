@@ -1,0 +1,109 @@
+<html>
+<head>
+<script src="http://transp-or.epfl.ch/biogeme/sorttable.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>b24halton_mixture - Report from biogeme 3.2.12 [2024-03-24]</title>
+<meta name="keywords" content="biogeme, discrete choice, random utility">
+<meta name="description" content="Report from biogeme 3.2.12 [2024-03-24]">
+<meta name="author" content="{bv.author}">
+<style type=text/css>
+.biostyle
+	{font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	font-family:Courier;}
+.boundstyle
+	{font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	font-family:Courier;
+        color:red}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<p>biogeme 3.2.12 [2024-03-24]</p>
+<p><a href="https://www.python.org/" target="_blank">Python</a> package</p>
+<p>Home page: <a href="http://biogeme.epfl.ch" target="_blank">http://biogeme.epfl.ch</a></p>
+<p>Submit questions to <a href="https://groups.google.com/d/forum/biogeme" target="_blank">https://groups.google.com/d/forum/biogeme</a></p>
+<p><a href="http://people.epfl.ch/michel.bierlaire">Michel Bierlaire</a>, <a href="http://transp-or.epfl.ch">Transport and Mobility Laboratory</a>, <a href="http://www.epfl.ch">Ecole Polytechnique F&#233;d&#233;rale de Lausanne (EPFL)</a></p>
+<p>This file has automatically been generated on 2024-03-24 17:13:02.937502</p>
+<table>
+<tr class=biostyle><td align=right><strong>Report file</strong>:	</td><td>b24halton_mixture~05.html</td></tr>
+<tr class=biostyle><td align=right><strong>Database name</strong>:	</td><td>MMNL_Preference_Model</td></tr>
+</table>
+<blockquote style="border: 2px solid #666; padding: 10px; background-color: #ccc;">Example of a mixture of logit models with two alternatives, approximated using Monte-Carlo integration with Halton draws.</blockquote><h1>Estimation report</h1>
+<table border="0">
+<tr class=biostyle><td align=right ><strong>Number of estimated parameters</strong>: </td> <td>8</td></tr>
+<tr class=biostyle><td align=right ><strong>Sample size</strong>: </td> <td>388</td></tr>
+<tr class=biostyle><td align=right ><strong>Observations</strong>: </td> <td>3492</td></tr>
+<tr class=biostyle><td align=right ><strong>Excluded observations</strong>: </td> <td>0</td></tr>
+<tr class=biostyle><td align=right ><strong>Init log likelihood</strong>: </td> <td>-1722.237</td></tr>
+<tr class=biostyle><td align=right ><strong>Final log likelihood</strong>: </td> <td>-1568.246</td></tr>
+<tr class=biostyle><td align=right ><strong>Likelihood ratio test for the init. model</strong>: </td> <td>307.9821</td></tr>
+<tr class=biostyle><td align=right ><strong>Rho-square for the init. model</strong>: </td> <td>0.0894</td></tr>
+<tr class=biostyle><td align=right ><strong>Rho-square-bar for the init. model</strong>: </td> <td>0.0848</td></tr>
+<tr class=biostyle><td align=right ><strong>Akaike Information Criterion</strong>: </td> <td>3152.493</td></tr>
+<tr class=biostyle><td align=right ><strong>Bayesian Information Criterion</strong>: </td> <td>3184.181</td></tr>
+<tr class=biostyle><td align=right ><strong>Final gradient norm</strong>: </td> <td>1.2624E-03</td></tr>
+<tr class=biostyle><td align=right ><strong>Number of draws</strong>: </td> <td>10</td></tr>
+<tr class=biostyle><td align=right ><strong>Draws generation time</strong>: </td> <td>0:00:00.015624</td></tr>
+<tr class=biostyle><td align=right ><strong>Types of draws</strong>: </td> <td>['b_ch: NORMAL_HALTON5', 'b_hw: NORMAL_HALTON5', 'b_tc: NORMAL_HALTON5', 'b_tt: NORMAL_HALTON5']</td></tr>
+<tr class=biostyle><td align=right ><strong>Nbr of threads</strong>: </td> <td>8</td></tr>
+<tr class=biostyle><td align=right ><strong>Relative gradient</strong>: </td> <td>9.800487978910257e-07</td></tr>
+<tr class=biostyle><td align=right ><strong>Cause of termination</strong>: </td> <td>Relative gradient = 9.8e-07 <= 6.1e-06</td></tr>
+<tr class=biostyle><td align=right ><strong>Number of function evaluations</strong>: </td> <td>21</td></tr>
+<tr class=biostyle><td align=right ><strong>Number of gradient evaluations</strong>: </td> <td>11</td></tr>
+<tr class=biostyle><td align=right ><strong>Number of hessian evaluations</strong>: </td> <td>10</td></tr>
+<tr class=biostyle><td align=right ><strong>Algorithm</strong>: </td> <td>Newton with trust region for simple bound constraints</td></tr>
+<tr class=biostyle><td align=right ><strong>Number of iterations</strong>: </td> <td>20</td></tr>
+<tr class=biostyle><td align=right ><strong>Proportion of Hessian calculation</strong>: </td> <td>10/11 = 90.9% [1 numerical issues]</td></tr>
+<tr class=biostyle><td align=right ><strong>Optimization time</strong>: </td> <td>0:00:08.908691</td></tr>
+</table>
+<h1>Estimated parameters</h1>
+<table border="1">
+<tr class=biostyle><th>Name</th><th>Value</th><th>Rob. Std err</th><th>Rob. t-test</th><th>Rob. p-value</th></tr>
+<tr class=biostyle><td>mu_log_b_ch</td><td>0.228</td><td>0.0764</td><td>2.98</td><td>0.00287</td></tr>
+<tr class=biostyle><td>mu_log_b_hw</td><td>-3.13</td><td>0.0776</td><td>-40.3</td><td>0</td></tr>
+<tr class=biostyle><td>mu_log_b_tc</td><td>-2.21</td><td>0.38</td><td>-5.82</td><td>5.83e-09</td></tr>
+<tr class=biostyle><td>mu_log_b_tt</td><td>-2.52</td><td>0.172</td><td>-14.6</td><td>0</td></tr>
+<tr class=biostyle><td>sigma_log_b_ch</td><td>0.899</td><td>0.135</td><td>6.66</td><td>2.66e-11</td></tr>
+<tr class=biostyle><td>sigma_log_b_hw</td><td>0.3</td><td>0.289</td><td>1.04</td><td>0.299</td></tr>
+<tr class=biostyle><td>sigma_log_b_tc</td><td>-1.22</td><td>0.214</td><td>-5.7</td><td>1.22e-08</td></tr>
+<tr class=biostyle><td>sigma_log_b_tt</td><td>-0.317</td><td>0.211</td><td>-1.5</td><td>0.134</td></tr>
+</table>
+<h2>Correlation of coefficients</h2>
+<table border="1">
+<tr class=biostyle><th>Coefficient1</th><th>Coefficient2</th><th>Covariance</th><th>Correlation</th><th>t-test</th><th>p-value</th><th>Rob. cov.</th><th>Rob. corr.</th><th>Rob. t-test</th><th>Rob. p-value</th></tr>
+<tr class=biostyle><td>mu_log_b_hw</td><td>mu_log_b_ch</td><td>0.00142</td><td>0.354</td><td>-46.3</td><td>0</td><td>0.00192</td><td>0.324</td><td>-37.5</td><td>0</td></tr>
+<tr class=biostyle><td>mu_log_b_tc</td><td>mu_log_b_ch</td><td>-0.00228</td><td>-0.18</td><td>-11.5</td><td>0</td><td>-0.00364</td><td>-0.125</td><td>-6.15</td><td>7.84e-10</td></tr>
+<tr class=biostyle><td>mu_log_b_tc</td><td>mu_log_b_hw</td><td>-0.000575</td><td>-0.0505</td><td>4.55</td><td>5.26e-06</td><td>-0.0046</td><td>-0.156</td><td>2.3</td><td>0.0216</td></tr>
+<tr class=biostyle><td>mu_log_b_tt</td><td>mu_log_b_ch</td><td>0.000395</td><td>0.0662</td><td>-25.4</td><td>0</td><td>0.000227</td><td>0.0173</td><td>-14.7</td><td>0</td></tr>
+<tr class=biostyle><td>mu_log_b_tt</td><td>mu_log_b_hw</td><td>0.000675</td><td>0.126</td><td>6.06</td><td>1.37e-09</td><td>-0.000789</td><td>-0.0591</td><td>3.18</td><td>0.00149</td></tr>
+<tr class=biostyle><td>mu_log_b_tt</td><td>mu_log_b_tc</td><td>0.0135</td><td>0.8</td><td>-2.36</td><td>0.0185</td><td>0.0567</td><td>0.867</td><td>-1.24</td><td>0.215</td></tr>
+<tr class=biostyle><td>sigma_log_b_ch</td><td>mu_log_b_ch</td><td>-0.00112</td><td>-0.15</td><td>4.84</td><td>1.31e-06</td><td>-0.00302</td><td>-0.293</td><td>3.87</td><td>0.000109</td></tr>
+<tr class=biostyle><td>sigma_log_b_ch</td><td>mu_log_b_hw</td><td>0.00014</td><td>0.0207</td><td>32</td><td>0</td><td>0.000338</td><td>0.0323</td><td>26.3</td><td>0</td></tr>
+<tr class=biostyle><td>sigma_log_b_ch</td><td>mu_log_b_tc</td><td>-0.00071</td><td>-0.0335</td><td>13.9</td><td>0</td><td>-0.0133</td><td>-0.26</td><td>7.15</td><td>8.61e-13</td></tr>
+<tr class=biostyle><td>sigma_log_b_ch</td><td>mu_log_b_tt</td><td>0.000298</td><td>0.0298</td><td>24.2</td><td>0</td><td>-0.00454</td><td>-0.196</td><td>14.3</td><td>0</td></tr>
+<tr class=biostyle><td>sigma_log_b_hw</td><td>mu_log_b_ch</td><td>-0.000126</td><td>-0.013</td><td>0.45</td><td>0.653</td><td>-0.000904</td><td>-0.0409</td><td>0.239</td><td>0.811</td></tr>
+<tr class=biostyle><td>sigma_log_b_hw</td><td>mu_log_b_hw</td><td>0.00254</td><td>0.291</td><td>24.5</td><td>0</td><td>0.00872</td><td>0.388</td><td>12.8</td><td>0</td></tr>
+<tr class=biostyle><td>sigma_log_b_hw</td><td>mu_log_b_tc</td><td>-0.000189</td><td>-0.00687</td><td>10.5</td><td>0</td><td>-0.000698</td><td>-0.00635</td><td>5.24</td><td>1.57e-07</td></tr>
+<tr class=biostyle><td>sigma_log_b_hw</td><td>mu_log_b_tt</td><td>0.000346</td><td>0.0267</td><td>16.7</td><td>0</td><td>-0.00177</td><td>-0.0356</td><td>8.24</td><td>2.22e-16</td></tr>
+<tr class=biostyle><td>sigma_log_b_hw</td><td>sigma_log_b_ch</td><td>0.00272</td><td>0.168</td><td>-3.57</td><td>0.000354</td><td>0.00215</td><td>0.055</td><td>-1.92</td><td>0.0552</td></tr>
+<tr class=biostyle><td>sigma_log_b_tc</td><td>mu_log_b_ch</td><td>-0.000243</td><td>-0.0309</td><td>-10.6</td><td>0</td><td>-0.00136</td><td>-0.0829</td><td>-6.21</td><td>5.41e-10</td></tr>
+<tr class=biostyle><td>sigma_log_b_tc</td><td>mu_log_b_hw</td><td>-9.43e-05</td><td>-0.0133</td><td>14.4</td><td>0</td><td>-0.00286</td><td>-0.172</td><td>7.96</td><td>1.78e-15</td></tr>
+<tr class=biostyle><td>sigma_log_b_tc</td><td>mu_log_b_tc</td><td>0.0144</td><td>0.648</td><td>6.88</td><td>6.15e-12</td><td>0.0634</td><td>0.779</td><td>3.94</td><td>8.16e-05</td></tr>
+<tr class=biostyle><td>sigma_log_b_tc</td><td>mu_log_b_tt</td><td>0.00603</td><td>0.576</td><td>13.2</td><td>0</td><td>0.0277</td><td>0.751</td><td>9.15</td><td>0</td></tr>
+<tr class=biostyle><td>sigma_log_b_tc</td><td>sigma_log_b_ch</td><td>0.00103</td><td>0.0787</td><td>-13.6</td><td>0</td><td>-0.00256</td><td>-0.0886</td><td>-8.06</td><td>8.88e-16</td></tr>
+<tr class=biostyle><td>sigma_log_b_tc</td><td>sigma_log_b_hw</td><td>0.000681</td><td>0.04</td><td>-8.31</td><td>0</td><td>-0.00785</td><td>-0.127</td><td>-3.99</td><td>6.66e-05</td></tr>
+<tr class=biostyle><td>sigma_log_b_tt</td><td>mu_log_b_ch</td><td>0.000644</td><td>0.09</td><td>-4.5</td><td>6.7e-06</td><td>-0.00178</td><td>-0.11</td><td>-2.34</td><td>0.0192</td></tr>
+<tr class=biostyle><td>sigma_log_b_tt</td><td>mu_log_b_hw</td><td>0.00036</td><td>0.0559</td><td>23.5</td><td>0</td><td>-0.00249</td><td>-0.152</td><td>11.9</td><td>0</td></tr>
+<tr class=biostyle><td>sigma_log_b_tt</td><td>mu_log_b_tc</td><td>0.00658</td><td>0.325</td><td>10.3</td><td>0</td><td>0.0483</td><td>0.601</td><td>6.23</td><td>4.64e-10</td></tr>
+<tr class=biostyle><td>sigma_log_b_tt</td><td>mu_log_b_tt</td><td>0.00493</td><td>0.517</td><td>22.5</td><td>0</td><td>0.0257</td><td>0.708</td><td>14.6</td><td>0</td></tr>
+<tr class=biostyle><td>sigma_log_b_tt</td><td>sigma_log_b_ch</td><td>0.00178</td><td>0.149</td><td>-8.51</td><td>0</td><td>0.000745</td><td>0.0261</td><td>-4.91</td><td>9.23e-07</td></tr>
+<tr class=biostyle><td>sigma_log_b_tt</td><td>sigma_log_b_hw</td><td>0.00158</td><td>0.102</td><td>-3.6</td><td>0.000315</td><td>-0.00558</td><td>-0.0912</td><td>-1.65</td><td>0.0986</td></tr>
+<tr class=biostyle><td>sigma_log_b_tt</td><td>sigma_log_b_tc</td><td>0.01</td><td>0.799</td><td>12.6</td><td>0</td><td>0.0411</td><td>0.909</td><td>9.96</td><td>0</td></tr>
+</table>
+<p>Smallest eigenvalue: 19.3321</p>
+<p>Largest eigenvalue: 1452.8</p>
+<p>Condition number: 75.1497</p>
+</html>

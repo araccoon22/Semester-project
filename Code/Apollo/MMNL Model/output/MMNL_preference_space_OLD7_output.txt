@@ -1,0 +1,164 @@
+Model run by alexi using Apollo 0.3.1 on R 4.2.3 for Windows.
+Please acknowledge the use of Apollo by citing Hess & Palma (2019)
+  DOI 10.1016/j.jocm.2019.100170
+  www.ApolloChoiceModelling.com
+
+Model name                                  : MMNL_preference_space
+Model description                           : Mixed logit model on Swiss route choice data, uncorrelated Lognormals in preference space
+Model run at                                : 2024-03-26 16:26:12
+Estimation method                           : bgw
+Model diagnosis                             : Relative function convergence
+Optimisation diagnosis                      : Maximum found
+     hessian properties                     : Negative definite
+     maximum eigenvalue                     : -38.566839
+     reciprocal of condition number         : 0.0792996
+Number of individuals                       : 388
+Number of rows in database                  : 3492
+Number of modelled outcomes                 : 3492
+
+Number of cores used                        :  4 
+Number of inter-individual draws            : 500 (halton)
+
+LL(start)                                   : -2253.78
+LL at equal shares, LL(0)                   : -2420.47
+LL at observed shares, LL(C)                : -2420.39
+LL(final)                                   : -1444.35
+Rho-squared vs equal shares                  :  0.4033 
+Adj.Rho-squared vs equal shares              :  0.4 
+Rho-squared vs observed shares               :  0.4033 
+Adj.Rho-squared vs observed shares           :  0.4004 
+AIC                                         :  2904.7 
+BIC                                         :  2953.97 
+
+Estimated parameters                        : 8
+Time taken (hh:mm:ss)                       :  00:03:16.98 
+     pre-estimation                         :  00:00:49.11 
+     estimation                             :  00:00:55.67 
+          initial estimation                :  00:00:48.14 
+          estimation after rescaling        :  00:00:7.53 
+     post-estimation                        :  00:01:32.2 
+Iterations                                  :  18  
+     initial estimation                     :  17 
+     estimation after rescaling             :  1 
+
+Unconstrained optimisation.
+
+Estimates:
+
+
+Overview of choices for MNL model component :
+                                    alt1    alt2
+Times available                  3492.00 3492.00
+Times chosen                     1734.00 1758.00
+Percentage chosen overall          49.66   50.34
+Percentage chosen when available   49.66   50.34
+
+
+
+Classical covariance matrix:
+
+Robust covariance matrix:
+
+Classical correlation matrix:
+
+Robust correlation matrix:
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+
+Changes in parameter estimates from starting values:
+
+Settings and functions used in model definition:
+
+apollo_control
+--------------
+                       Value                                                                                      
+modelName              "MMNL_preference_space"                                                                    
+modelDescr             "Mixed logit model on Swiss route choice data, uncorrelated Lognormals in preference space"
+indivID                "ID"                                                                                       
+nCores                 "4"                                                                                        
+outputDirectory        "output/"                                                                                  
+mixing                 "TRUE"                                                                                     
+debug                  "FALSE"                                                                                    
+workInLogs             "FALSE"                                                                                    
+seed                   "13"                                                                                       
+HB                     "FALSE"                                                                                    
+noValidation           "FALSE"                                                                                    
+noDiagnostics          "FALSE"                                                                                    
+calculateLLC           "TRUE"                                                                                     
+panelData              "TRUE"                                                                                     
+analyticGrad           "TRUE"                                                                                     
+analyticGrad_manualSet "FALSE"                                                                                    
+overridePanel          "FALSE"                                                                                    
+preventOverridePanel   "FALSE"                                                                                    
+noModification         "FALSE"                                                                                    
+
+Hessian routines attempted
+--------------------------
+numerical jacobian of LL analytical gradient
+
+Scaling used in computing Hessian
+---------------------------------
+                   Value
+mu_log_b_tt    1.9838212
+sigma_log_b_tt 0.4416419
+mu_log_b_tc    1.0157745
+sigma_log_b_tc 0.9912980
+mu_log_b_hw    2.9378456
+sigma_log_b_hw 0.8344300
+mu_log_b_ch    0.6311550
+sigma_log_b_ch 0.8578212
+
+
+apollo_randCoeff
+------------------
+function(apollo_beta, apollo_inputs){
+  randcoeff = list()
+
+  randcoeff[["b_tt"]] = -exp( mu_log_b_tt + sigma_log_b_tt * draws_tt )
+  randcoeff[["b_tc"]] = -exp( mu_log_b_tc + sigma_log_b_tc * draws_tc )
+  randcoeff[["b_hw"]] = -exp( mu_log_b_hw + sigma_log_b_hw * draws_hw )
+  randcoeff[["b_ch"]] = -exp( mu_log_b_ch + sigma_log_b_ch * draws_ch )
+
+  return(randcoeff)
+}
+<bytecode: 0x000001bf604b0a90>
+
+
+apollo_probabilities
+----------------------
+function(apollo_beta, apollo_inputs, functionality="estimate"){
+
+  ### Function initialisation: do not change the following three commands
+  ### Attach inputs and detach after function exit
+  apollo_attach(apollo_beta, apollo_inputs)
+  on.exit(apollo_detach(apollo_beta, apollo_inputs))
+
+  ### Create list of probabilities P
+  P = list()
+
+  ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
+  V = list()
+  V[["alt1"]] = b_tt * tt1 + b_tc * tc1 + b_hw * hw1 + b_ch * ch1
+  V[["alt2"]] = b_tt * tt2 + b_tc * tc2 + b_hw * hw2 + b_ch * ch2
+
+  ### Define settings for MNL model component
+  mnl_settings = list(
+    alternatives  = c(alt1=1, alt2=2),
+    avail         = list(alt1=1, alt2=1),
+    choiceVar     = choice,
+    utilities     = V
+  )
+
+  ### Compute probabilities using MNL model
+  P[["model"]] = apollo_mnl(mnl_settings, functionality)
+
+  ### Take product across observation for same individual
+  P = apollo_panelProd(P, apollo_inputs, functionality)
+
+  ### Average across inter-individual draws
+  P = apollo_avgInterDraws(P, apollo_inputs, functionality)
+
+  ### Prepare and return outputs of function
+  P = apollo_prepareProb(P, apollo_inputs, functionality)
+  return(P)
+}

@@ -5,7 +5,7 @@ Please acknowledge the use of Apollo by citing Hess & Palma (2019)
 
 Model name                                  : MMNL_preference_space
 Model description                           : Mixed logit model on Swiss route choice data, uncorrelated Lognormals in preference space
-Model run at                                : 2024-03-27 10:50:48
+Model run at                                : 2024-03-21 09:50:35
 Estimation method                           : bgw
 Model diagnosis                             : Relative function convergence
 Optimisation diagnosis                      : Maximum found
@@ -31,12 +31,12 @@ AIC                                         :  2904.7
 BIC                                         :  2953.97 
 
 Estimated parameters                        : 8
-Time taken (hh:mm:ss)                       :  00:03:25.65 
-     pre-estimation                         :  00:00:55.57 
-     estimation                             :  00:00:56.37 
-          initial estimation                :  00:00:48.32 
-          estimation after rescaling        :  00:00:8.05 
-     post-estimation                        :  00:01:33.72 
+Time taken (hh:mm:ss)                       :  00:03:3.79 
+     pre-estimation                         :  00:00:47.18 
+     estimation                             :  00:00:48.81 
+          initial estimation                :  00:00:41.94 
+          estimation after rescaling        :  00:00:6.87 
+     post-estimation                        :  00:01:27.8 
 Iterations                                  :  18  
      initial estimation                     :  17 
      estimation after rescaling             :  1 
@@ -45,6 +45,7 @@ Unconstrained optimisation.
 
 Estimates:
                   Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
+asc                 0.0000          NA          NA          NA            NA
 mu_log_b_tt        -1.9838     0.08758     -22.650     0.11524       -17.214
 sigma_log_b_tt     -0.4416     0.07066      -6.251     0.06775        -6.518
 mu_log_b_tc        -1.0158     0.13222      -7.682     0.17146        -5.924
@@ -169,6 +170,7 @@ sigma_log_b_ch       0.026555       -0.22168      -0.002282       1.000000
 
 Changes in parameter estimates from starting values:
                    Initial    Estimate  Difference
+asc                0.00000      0.0000     0.00000
 mu_log_b_tt       -3.00000     -1.9838     1.01618
 sigma_log_b_tt    -0.01000     -0.4416    -0.43164
 mu_log_b_tc       -3.00000     -1.0158     1.98423
@@ -232,7 +234,7 @@ function(apollo_beta, apollo_inputs){
 
   return(randcoeff)
 }
-<bytecode: 0x0000028a55765c90>
+<bytecode: 0x000001676c310658>
 
 
 apollo_probabilities
@@ -249,7 +251,7 @@ function(apollo_beta, apollo_inputs, functionality="estimate"){
 
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
-  V[["alt1"]] = b_tt * tt1 + b_tc * tc1 + b_hw * hw1 + b_ch * ch1
+  V[["alt1"]] = asc + b_tt * tt1 + b_tc * tc1 + b_hw * hw1 + b_ch * ch1
   V[["alt2"]] = b_tt * tt2 + b_tc * tc2 + b_hw * hw2 + b_ch * ch2
 
   ### Define settings for MNL model component
