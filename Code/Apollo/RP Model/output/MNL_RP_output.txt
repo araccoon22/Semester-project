@@ -1,0 +1,148 @@
+Model run by alexi using Apollo 0.3.1 on R 4.2.3 for Windows.
+Please acknowledge the use of Apollo by citing Hess & Palma (2019)
+  DOI 10.1016/j.jocm.2019.100170
+  www.ApolloChoiceModelling.com
+
+Model name                                  : MNL_RP
+Model description                           : Simple MNL model on mode choice RP data
+Model run at                                : 2024-04-10 10:43:06
+Estimation method                           : bgw
+Model diagnosis                             : Relative function convergence
+Optimisation diagnosis                      : Maximum found
+     hessian properties                     : Negative definite
+     maximum eigenvalue                     : -0.79691
+     reciprocal of condition number         : 3.93679e-08
+Number of individuals                       : 500
+Number of rows in database                  : 1000
+Number of modelled outcomes                 : 1000
+
+Number of cores used                        :  1 
+Model without mixing
+
+LL(start)                                   : -1170.86
+LL at equal shares, LL(0)                   : -1170.86
+LL at observed shares, LL(C)                : -1085.14
+LL(final)                                   : -1025.76
+Rho-squared vs equal shares                  :  0.1239 
+Adj.Rho-squared vs equal shares              :  0.1162 
+Rho-squared vs observed shares               :  0.0547 
+Adj.Rho-squared vs observed shares           :  0.0492 
+AIC                                         :  2069.51 
+BIC                                         :  2113.68 
+
+Estimated parameters                        : 9
+Time taken (hh:mm:ss)                       :  00:00:1.89 
+     pre-estimation                         :  00:00:0.36 
+     estimation                             :  00:00:0.49 
+          initial estimation                :  00:00:0.46 
+          estimation after rescaling        :  00:00:0.03 
+     post-estimation                        :  00:00:1.04 
+Iterations                                  :  9  
+     initial estimation                     :  8 
+     estimation after rescaling             :  1 
+
+Unconstrained optimisation.
+
+Estimates:
+
+
+Overview of choices for MNL model component :
+                                    car    bus    air   rail
+Times available                  778.00 902.00 752.00 874.00
+Times chosen                     332.00 126.00 215.00 327.00
+Percentage chosen overall         33.20  12.60  21.50  32.70
+Percentage chosen when available  42.67  13.97  28.59  37.41
+
+
+
+Classical covariance matrix:
+
+Robust covariance matrix:
+
+Classical correlation matrix:
+
+Robust correlation matrix:
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+
+Changes in parameter estimates from starting values:
+
+Settings and functions used in model definition:
+
+apollo_control
+--------------
+                       Value                                    
+modelName              "MNL_RP"                                 
+modelDescr             "Simple MNL model on mode choice RP data"
+indivID                "ID"                                     
+outputDirectory        "output/"                                
+debug                  "FALSE"                                  
+nCores                 "1"                                      
+workInLogs             "FALSE"                                  
+seed                   "13"                                     
+mixing                 "FALSE"                                  
+HB                     "FALSE"                                  
+noValidation           "FALSE"                                  
+noDiagnostics          "FALSE"                                  
+calculateLLC           "TRUE"                                   
+panelData              "TRUE"                                   
+analyticGrad           "TRUE"                                   
+analyticGrad_manualSet "FALSE"                                  
+overridePanel          "FALSE"                                  
+preventOverridePanel   "FALSE"                                  
+noModification         "FALSE"                                  
+
+Hessian routines attempted
+--------------------------
+numerical jacobian of LL analytical gradient
+
+Scaling used in computing Hessian
+---------------------------------
+                Value
+asc_bus   0.474676662
+asc_air   1.629073274
+asc_rail  0.944533157
+b_tt_car  0.003646077
+b_tt_bus  0.008846172
+b_tt_air  0.020684990
+b_tt_rail 0.011239354
+b_access  0.011465759
+b_cost    0.033947175
+
+
+apollo_probabilities
+----------------------
+function(apollo_beta, apollo_inputs, functionality="estimate"){
+  
+  ### Attach inputs and detach after function exit
+  apollo_attach(apollo_beta, apollo_inputs)
+  on.exit(apollo_detach(apollo_beta, apollo_inputs))
+  
+  ### Create list of probabilities P
+  P = list()
+  
+  ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
+  V = list()
+  V[["car"]]  = asc_car  + b_tt_car  * time_car                           + b_cost * cost_car
+  V[["bus"]]  = asc_bus  + b_tt_bus  * time_bus  + b_access * access_bus  + b_cost * cost_bus 
+  V[["air"]]  = asc_air  + b_tt_air  * time_air  + b_access * access_air  + b_cost * cost_air   
+  V[["rail"]] = asc_rail + b_tt_rail * time_rail + b_access * access_rail + b_cost * cost_rail  
+  
+  ### Define settings for MNL model component
+  mnl_settings = list(
+    alternatives  = c(car=1, bus=2, air=3, rail=4), 
+    avail         = list(car=av_car, bus=av_bus, air=av_air, rail=av_rail), 
+    choiceVar     = choice,
+    utilities     = V
+  )
+  
+  ### Compute probabilities using MNL model
+  P[["model"]] = apollo_mnl(mnl_settings, functionality)
+  
+  ### Take product across observation for same individual
+  P = apollo_panelProd(P, apollo_inputs, functionality)
+  
+  ### Prepare and return outputs of function
+  P = apollo_prepareProb(P, apollo_inputs, functionality)
+  return(P)
+}
