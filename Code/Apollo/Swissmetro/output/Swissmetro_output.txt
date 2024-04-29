@@ -1,0 +1,161 @@
+Model run by alexi using Apollo 0.3.2 on R 4.2.3 for Windows.
+Please acknowledge the use of Apollo by citing Hess & Palma (2019)
+  DOI 10.1016/j.jocm.2019.100170
+  www.ApolloChoiceModelling.com
+
+Model name                                  : Swissmetro
+Model description                           : Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space
+Model run at                                : 2024-04-29 08:55:52
+Estimation method                           : bgw
+Model diagnosis                             : Relative function convergence
+Optimisation diagnosis                      : Maximum found
+     hessian properties                     : Negative definite
+     maximum eigenvalue                     : -22.640577
+     reciprocal of condition number         : 0.032934
+Number of individuals                       : 752
+Number of rows in database                  : 6768
+Number of modelled outcomes                 : 6768
+
+Number of cores used                        :  4 
+Number of inter-individual draws            : 100 (halton)
+
+LL(start)                                   : -5782.84
+LL at equal shares, LL(0)                   : -6964.66
+LL at observed shares, LL(C)                : -5865
+LL(final)                                   : -4363.05
+Rho-squared vs equal shares                  :  0.3735 
+Adj.Rho-squared vs equal shares              :  0.3728 
+Rho-squared vs observed shares               :  0.2561 
+Adj.Rho-squared vs observed shares           :  0.2556 
+AIC                                         :  8736.11 
+BIC                                         :  8770.21 
+
+Estimated parameters                        : 5
+Time taken (hh:mm:ss)                       :  00:01:2.75 
+     pre-estimation                         :  00:00:14.55 
+     estimation                             :  00:00:39.83 
+          initial estimation                :  00:00:37.09 
+          estimation after rescaling        :  00:00:2.74 
+     post-estimation                        :  00:00:8.38 
+Iterations                                  :  61  
+     initial estimation                     :  59 
+     estimation after rescaling             :  2 
+
+Unconstrained optimisation.
+
+Estimates:
+
+
+Overview of choices for MNL model component :
+                                    alt1    alt2    alt3
+Times available                  6768.00 6768.00 5607.00
+Times chosen                      908.00 4090.00 1770.00
+Percentage chosen overall          13.42   60.43   26.15
+Percentage chosen when available   13.42   60.43   31.57
+
+
+
+Classical covariance matrix:
+
+Robust covariance matrix:
+
+Classical correlation matrix:
+
+Robust correlation matrix:
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+
+Changes in parameter estimates from starting values:
+
+Settings and functions used in model definition:
+
+apollo_control
+--------------
+                       Value                                                                         
+modelName              "Swissmetro"                                                                  
+modelDescr             "Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space"
+indivID                "ID"                                                                          
+nCores                 "4"                                                                           
+outputDirectory        "output/"                                                                     
+mixing                 "TRUE"                                                                        
+debug                  "FALSE"                                                                       
+workInLogs             "FALSE"                                                                       
+seed                   "13"                                                                          
+HB                     "FALSE"                                                                       
+noValidation           "FALSE"                                                                       
+noDiagnostics          "FALSE"                                                                       
+calculateLLC           "TRUE"                                                                        
+panelData              "TRUE"                                                                        
+analyticGrad           "TRUE"                                                                        
+analyticGrad_manualSet "FALSE"                                                                       
+overridePanel          "FALSE"                                                                       
+preventOverridePanel   "FALSE"                                                                       
+noModification         "FALSE"                                                                       
+
+Hessian routines attempted
+--------------------------
+numerical jacobian of LL analytical gradient
+
+Scaling used in computing Hessian
+---------------------------------
+              Value
+ASC_CAR   0.2806624
+ASC_TRAIN 0.5722169
+B_COST    1.6501835
+B_TIME    3.1647364
+B_TIME_S  3.7181633
+
+
+apollo_randCoeff
+------------------
+function(apollo_beta, apollo_inputs){
+  randcoeff = list()
+
+  randcoeff[["B_TIME_RND"]] = B_TIME + B_TIME_S * draws
+
+  return(randcoeff)
+}
+<bytecode: 0x00000204000cdaa0>
+
+
+apollo_probabilities
+----------------------
+function(apollo_beta, apollo_inputs, functionality="estimate"){
+
+  ### Function initialisation: do not change the following three commands
+  ### Attach inputs and detach after function exit
+  apollo_attach(apollo_beta, apollo_inputs)
+  on.exit(apollo_detach(apollo_beta, apollo_inputs))
+
+  ### Create list of probabilities P
+  P = list()
+
+  ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
+  V = list()
+  V[["alt1"]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST * TRAIN_COST_SCALED
+  V[["alt2"]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST * SM_COST_SCALED
+  V[["alt3"]] = ASC_CAR + B_TIME_RND * CAR_TT_SCALED + B_COST * CAR_CO_SCALED
+
+
+  ### Define settings for MNL model component
+  mnl_settings = list(
+    alternatives  = c(alt1=1, alt2=2, alt3=3),
+    avail         = list(alt1=TRAIN_AV, alt2=SM_AV, alt3=CAR_AV),
+    choiceVar     = CHOICE,
+    utilities     = V
+  )
+
+  ### Compute probabilities using MNL model
+  P[["model"]] = apollo_mnl(mnl_settings, functionality)
+  
+    ### Take product across observation for same individual
+  P = apollo_panelProd(P, apollo_inputs, functionality)
+
+  ### Average across inter-individual draws
+  P = apollo_avgInterDraws(P, apollo_inputs, functionality)
+
+
+  ### Prepare and return outputs of function
+  P = apollo_prepareProb(P, apollo_inputs, functionality)
+  return(P)
+}

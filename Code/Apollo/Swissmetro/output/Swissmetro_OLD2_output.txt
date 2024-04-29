@@ -1,0 +1,220 @@
+Model run by alexi using Apollo 0.3.2 on R 4.2.3 for Windows.
+Please acknowledge the use of Apollo by citing Hess & Palma (2019)
+  DOI 10.1016/j.jocm.2019.100170
+  www.ApolloChoiceModelling.com
+
+Model name                                  : Swissmetro
+Model description                           : Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space
+Model run at                                : 2024-04-24 20:14:10
+Estimation method                           : bgw
+Model diagnosis                             : Relative function convergence
+Optimisation diagnosis                      : Maximum found
+     hessian properties                     : Negative definite
+     maximum eigenvalue                     : -22.640577
+     reciprocal of condition number         : 0.032934
+Number of individuals                       : 752
+Number of rows in database                  : 6768
+Number of modelled outcomes                 : 6768
+
+Number of cores used                        :  4 
+Number of inter-individual draws            : 100 (halton)
+
+LL(start)                                   : -5782.84
+LL at equal shares, LL(0)                   : -6964.66
+LL at observed shares, LL(C)                : -5865
+LL(final)                                   : -4363.05
+Rho-squared vs equal shares                  :  0.3735 
+Adj.Rho-squared vs equal shares              :  0.3728 
+Rho-squared vs observed shares               :  0.2561 
+Adj.Rho-squared vs observed shares           :  0.2556 
+AIC                                         :  8736.11 
+BIC                                         :  8770.21 
+
+Estimated parameters                        : 5
+Time taken (hh:mm:ss)                       :  00:01:4.7 
+     pre-estimation                         :  00:00:12.81 
+     estimation                             :  00:00:42.92 
+          initial estimation                :  00:00:39.7 
+          estimation after rescaling        :  00:00:3.22 
+     post-estimation                        :  00:00:8.97 
+Iterations                                  :  61  
+     initial estimation                     :  59 
+     estimation after rescaling             :  2 
+
+Unconstrained optimisation.
+
+Estimates:
+             Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
+ASC_CAR        0.2807     0.05503       5.100      0.1042         2.694
+ASC_TRAIN     -0.5722     0.07518      -7.611      0.1328        -4.308
+ASC_SM         0.0000          NA          NA          NA            NA
+B_COST        -1.6502     0.07720     -21.375      0.2898        -5.695
+B_TIME        -3.1647     0.15288     -20.701      0.1888       -16.763
+B_TIME_S       3.7182     0.16310      22.796      0.2240        16.597
+
+
+Overview of choices for MNL model component :
+                                    alt1    alt2    alt3
+Times available                  6768.00 6768.00 5607.00
+Times chosen                      908.00 4090.00 1770.00
+Percentage chosen overall          13.42   60.43   26.15
+Percentage chosen when available   13.42   60.43   31.57
+
+
+
+Classical covariance matrix:
+              ASC_CAR   ASC_TRAIN      B_COST      B_TIME    B_TIME_S
+ASC_CAR      0.003028    0.002465  7.1079e-04   -0.002886    0.002085
+ASC_TRAIN    0.002465    0.005652  7.0982e-04   -0.003153    0.001195
+B_COST     7.1079e-04  7.0982e-04    0.005960    0.001958   -0.002348
+B_TIME      -0.002886   -0.003153    0.001958    0.023371   -0.018319
+B_TIME_S     0.002085    0.001195   -0.002348   -0.018319    0.026603
+
+Robust covariance matrix:
+              ASC_CAR   ASC_TRAIN      B_COST      B_TIME    B_TIME_S
+ASC_CAR      0.010853    0.007426    0.003715   -0.007411    0.006196
+ASC_TRAIN    0.007426    0.017642    0.007198   -0.007445    0.006091
+B_COST       0.003715    0.007198    0.083968    0.021406   -0.022835
+B_TIME      -0.007411   -0.007445    0.021406    0.035643   -0.039522
+B_TIME_S     0.006196    0.006091   -0.022835   -0.039522    0.050186
+
+Classical correlation matrix:
+              ASC_CAR   ASC_TRAIN      B_COST      B_TIME    B_TIME_S
+ASC_CAR        1.0000     0.59584      0.1673     -0.3431     0.23226
+ASC_TRAIN      0.5958     1.00000      0.1223     -0.2744     0.09749
+B_COST         0.1673     0.12230      1.0000      0.1659    -0.18649
+B_TIME        -0.3431    -0.27437      0.1659      1.0000    -0.73469
+B_TIME_S       0.2323     0.09749     -0.1865     -0.7347     1.00000
+
+Robust correlation matrix:
+              ASC_CAR   ASC_TRAIN      B_COST      B_TIME    B_TIME_S
+ASC_CAR        1.0000      0.5367      0.1231     -0.3768      0.2655
+ASC_TRAIN      0.5367      1.0000      0.1870     -0.2969      0.2047
+B_COST         0.1231      0.1870      1.0000      0.3913     -0.3518
+B_TIME        -0.3768     -0.2969      0.3913      1.0000     -0.9345
+B_TIME_S       0.2655      0.2047     -0.3518     -0.9345      1.0000
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+  ID Avg prob per choice
+ 394         0.002501982
+  56         0.015361501
+  58         0.035276101
+ 104         0.039463753
+ 102         0.116358393
+ 105         0.138822379
+ 393         0.139287493
+ 362         0.163376027
+ 351         0.182713989
+ 937         0.190079215
+ 796         0.190162009
+  19         0.193667658
+  77         0.204285387
+ 578         0.205538629
+  81         0.207321430
+ 867         0.207490318
+ 783         0.211177384
+  63         0.218308854
+ 454         0.221376962
+ 283         0.226384615
+
+Changes in parameter estimates from starting values:
+              Initial    Estimate  Difference
+ASC_CAR         0.000      0.2807      0.2807
+ASC_TRAIN       0.000     -0.5722     -0.5722
+ASC_SM          0.000      0.0000      0.0000
+B_COST          0.000     -1.6502     -1.6502
+B_TIME          0.000     -3.1647     -3.1647
+B_TIME_S        1.000      3.7182      2.7182
+
+Settings and functions used in model definition:
+
+apollo_control
+--------------
+                       Value                                                                         
+modelName              "Swissmetro"                                                                  
+modelDescr             "Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space"
+indivID                "ID"                                                                          
+nCores                 "4"                                                                           
+outputDirectory        "output/"                                                                     
+mixing                 "TRUE"                                                                        
+debug                  "FALSE"                                                                       
+workInLogs             "FALSE"                                                                       
+seed                   "13"                                                                          
+HB                     "FALSE"                                                                       
+noValidation           "FALSE"                                                                       
+noDiagnostics          "FALSE"                                                                       
+calculateLLC           "TRUE"                                                                        
+panelData              "TRUE"                                                                        
+analyticGrad           "TRUE"                                                                        
+analyticGrad_manualSet "FALSE"                                                                       
+overridePanel          "FALSE"                                                                       
+preventOverridePanel   "FALSE"                                                                       
+noModification         "FALSE"                                                                       
+
+Hessian routines attempted
+--------------------------
+numerical jacobian of LL analytical gradient
+
+Scaling used in computing Hessian
+---------------------------------
+              Value
+ASC_CAR   0.2806624
+ASC_TRAIN 0.5722169
+B_COST    1.6501835
+B_TIME    3.1647364
+B_TIME_S  3.7181633
+
+
+apollo_randCoeff
+------------------
+function(apollo_beta, apollo_inputs){
+  randcoeff = list()
+
+  randcoeff[["B_TIME_RND"]] = B_TIME + B_TIME_S * draws
+
+  return(randcoeff)
+}
+<bytecode: 0x00000144a155d740>
+
+
+apollo_probabilities
+----------------------
+function(apollo_beta, apollo_inputs, functionality="estimate"){
+
+  ### Function initialisation: do not change the following three commands
+  ### Attach inputs and detach after function exit
+  apollo_attach(apollo_beta, apollo_inputs)
+  on.exit(apollo_detach(apollo_beta, apollo_inputs))
+
+  ### Create list of probabilities P
+  P = list()
+
+  ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
+  V = list()
+  V[["alt1"]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST * TRAIN_COST_SCALED
+  V[["alt2"]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST * SM_COST_SCALED
+  V[["alt3"]] = ASC_CAR + B_TIME_RND * CAR_TT_SCALED + B_COST * CAR_CO_SCALED
+
+
+  ### Define settings for MNL model component
+  mnl_settings = list(
+    alternatives  = c(alt1=1, alt2=2, alt3=3),
+    avail         = list(alt1=TRAIN_AV, alt2=SM_AV, alt3=CAR_AV),
+    choiceVar     = CHOICE,
+    utilities     = V
+  )
+
+  ### Compute probabilities using MNL model
+  P[["model"]] = apollo_mnl(mnl_settings, functionality)
+  
+    ### Take product across observation for same individual
+  P = apollo_panelProd(P, apollo_inputs, functionality)
+
+  ### Average across inter-individual draws
+  P = apollo_avgInterDraws(P, apollo_inputs, functionality)
+
+
+  ### Prepare and return outputs of function
+  P = apollo_prepareProb(P, apollo_inputs, functionality)
+  return(P)
+}
