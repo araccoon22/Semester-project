@@ -12,7 +12,7 @@
 
 <meta name="date" content="2024-04-24" />
 
-<title>Swissmetro</title>
+<title>Swissmetro - 500 draws</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,7 +349,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Swissmetro</h1>
+<h1 class="title toc-ignore">Swissmetro - 500 draws</h1>
 <h4 class="date">2024-04-24</h4>
 
 </div>
@@ -395,7 +395,10 @@ library(dplyr)</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>### Initialise code
+<pre class="r"><code>#library to export coefficient in excel table
+library(openxlsx)
+
+### Initialise code
 apollo_initialise()
 
 ### Set core controls
@@ -419,9 +422,7 @@ db_swissmetro &lt;- subset(db_swissmetro, !exclude) #This makes us go from  10,7
 </div>
 <div id="defining-new-variables" class="section level2">
 <h2>DEFINING NEW VARIABLES</h2>
-<pre class="r"><code>#To not refere to database_swissmetro everytime
-
-#We define the new variables that we will use later and add them directly to the database
+<pre class="r"><code>#We define the new variables that we will use later and add them directly to the database
 
 
 db_swissmetro$SM_COST &lt;- db_swissmetro$SM_CO * (db_swissmetro$GA == 0)
@@ -450,10 +451,12 @@ apollo_fixed = c(&quot;ASC_SM&quot;)</code></pre>
 </div>
 <div id="defining-random-parameters" class="section level2">
 <h2>DEFINING RANDOM PARAMETERS</h2>
-<pre class="r"><code>### Set parameters for generating draws
+<pre class="r"><code>set.seed(1)
+
+### Set parameters for generating draws
 apollo_draws = list(
   interDrawsType = &quot;halton&quot;, #differences btw individuals
-  interNDraws    = 100,
+  interNDraws    = 500,
   interUnifDraws = c(),
   interNormDraws = c(&quot;draws&quot;),  #Standard Normal dist draws
   intraDrawsType = &quot;halton&quot;,
@@ -551,94 +554,37 @@ apollo_randCoeff = function(apollo_beta, apollo_inputs){
 ## Iterates will be written to: 
 ##  output/Swissmetro_iterations.csv
 ##     it    nf     F            RELDF    PRELDF    RELDX    MODEL stppar
-##      0     1 5.782841589e+03
-##      1     6 5.383619362e+03 6.904e-02 4.125e-02 1.13e-01   G   0.00e+00
-##      2     7 5.034871524e+03 6.478e-02 4.068e-02 1.20e-01   G   0.00e+00
-##      3     8 4.540946326e+03 9.810e-02 8.023e-02 2.84e-01   S   0.00e+00
-##      4    10 4.450304652e+03 1.996e-02 1.534e-02 1.21e-01  S-G  0.00e+00
-##      5    11 4.421805401e+03 6.404e-03 4.219e-03 6.35e-02   G   0.00e+00
-##      6    12 4.408730340e+03 2.957e-03 1.695e-03 3.68e-02   G   0.00e+00
-##      7    13 4.399934072e+03 1.995e-03 1.081e-03 2.97e-02   G   0.00e+00
-##      8    14 4.393182366e+03 1.535e-03 8.400e-04 2.44e-02   G   0.00e+00
-##      9    15 4.387821152e+03 1.220e-03 6.544e-04 2.11e-02   G   0.00e+00
-##     10    16 4.383570164e+03 9.688e-04 5.218e-04 1.79e-02   G   0.00e+00
-##     11    17 4.380114178e+03 7.884e-04 4.204e-04 1.58e-02   G   0.00e+00
-##     12    19 4.375835870e+03 9.768e-04 7.265e-03 5.78e-02   S   7.36e-01
-##     13    21 4.368891110e+03 1.587e-03 9.517e-02 6.51e-02  S-G  0.00e+00
-##     14    22 4.365111293e+03 8.652e-04 7.272e-04 1.71e-02   G   0.00e+00
-##     15    23 4.363980880e+03 2.590e-04 3.251e-04 1.25e-02   G   0.00e+00
-##     16    24 4.363482471e+03 1.142e-04 1.301e-04 8.08e-03   G   0.00e+00
-##     17    26 4.363382854e+03 2.283e-05 2.355e-05 1.93e-03  S-G  0.00e+00
-##     18    27 4.363333069e+03 1.141e-05 3.431e-05 4.54e-03   G   0.00e+00
-##     19    28 4.363273745e+03 1.360e-05 2.389e-05 4.02e-03   G   0.00e+00
-##     20    29 4.363255668e+03 4.143e-06 3.447e-05 4.04e-03   G   0.00e+00
-##     21    30 4.363214212e+03 9.501e-06 2.153e-05 3.70e-03   G   0.00e+00
-##     22    31 4.363212051e+03 4.951e-07 3.164e-05 3.97e-03   G   0.00e+00
-##     23    32 4.363140059e+03 1.650e-05 1.698e-05 2.08e-03   G   2.37e-01
-##     24    34 4.363120458e+03 4.492e-06 7.043e-05 1.78e-03  S-G  0.00e+00
-##     25    35 4.363110113e+03 2.371e-06 3.304e-06 6.48e-04   G   1.66e-01
-##     26    36 4.363101863e+03 1.891e-06 3.667e-06 9.97e-04   G   1.26e-01
-##     27    37 4.363094061e+03 1.788e-06 3.105e-06 1.03e-03   G   1.26e-01
-##     28    38 4.363092196e+03 4.274e-07 2.868e-06 1.06e-03   G   4.60e-02
-##     29    39 4.363085639e+03 1.503e-06 3.885e-06 1.22e-03   G   1.35e-01
-##     30    41 4.363078111e+03 1.725e-06 1.373e-06 3.80e-04  G-S  0.00e+00
-##     31    42 4.363073750e+03 9.997e-07 5.927e-07 5.19e-04   S   0.00e+00
-##     32    43 4.363066912e+03 1.567e-06 1.297e-06 1.54e-03   S   0.00e+00
-##     33    44 4.363064781e+03 4.885e-07 3.425e-07 8.47e-04   S   0.00e+00
-##     34    45 4.363062922e+03 4.260e-07 3.180e-07 9.49e-04   S   0.00e+00
-##     35    46 4.363061537e+03 3.174e-07 2.259e-07 6.84e-04   S   0.00e+00
-##     36    47 4.363060228e+03 3.000e-07 2.121e-07 5.73e-04   S   0.00e+00
-##     37    48 4.363059014e+03 2.782e-07 1.915e-07 4.24e-04   S   0.00e+00
-##     38    49 4.363057901e+03 2.552e-07 1.758e-07 2.90e-04   S   0.00e+00
-##     39    50 4.363056990e+03 2.087e-07 1.431e-07 1.81e-04   S   0.00e+00
-##     40    51 4.363055835e+03 2.648e-07 2.068e-07 2.09e-04   G   0.00e+00
-##     41    52 4.363055692e+03 3.290e-08 2.404e-07 3.61e-04   G   0.00e+00
-##     42    54 4.363054646e+03 2.396e-07 1.727e-07 2.22e-04  G-S  0.00e+00
-##     43    55 4.363054204e+03 1.014e-07 7.615e-08 1.10e-04   S   0.00e+00
-##     44    56 4.363054000e+03 4.665e-08 3.234e-08 9.85e-05   S   0.00e+00
-##     45    57 4.363053881e+03 2.727e-08 2.081e-08 1.07e-04   S   0.00e+00
-##     46    58 4.363053835e+03 1.058e-08 7.300e-09 6.46e-05   S   0.00e+00
-##     47    59 4.363053804e+03 7.205e-09 5.139e-09 6.29e-05   S   0.00e+00
-##     48    60 4.363053783e+03 4.696e-09 3.133e-09 5.26e-05   S   0.00e+00
-##     49    61 4.363053765e+03 4.189e-09 2.927e-09 6.11e-05   S   0.00e+00
-##     50    62 4.363053751e+03 3.093e-09 2.065e-09 5.25e-05   S   0.00e+00
-##     51    63 4.363053739e+03 2.736e-09 1.907e-09 5.39e-05   S   0.00e+00
-##     52    64 4.363053731e+03 1.996e-09 1.345e-09 3.82e-05   S   0.00e+00
-##     53    65 4.363053723e+03 1.656e-09 1.161e-09 2.90e-05   S   0.00e+00
-##     54    66 4.363053718e+03 1.151e-09 7.864e-10 1.74e-05   S   0.00e+00
-##     55    67 4.363053715e+03 8.804e-10 6.213e-10 1.74e-05   S   0.00e+00
-##     56    69 4.363053712e+03 6.379e-10 9.504e-10 1.72e-05   G   2.24e-01
-##     57    70 4.363053711e+03 9.788e-11 1.787e-10 9.06e-06   G   0.00e+00
-##     58    72 4.363053711e+03 1.783e-10 2.706e-10 6.01e-06   G   4.87e-01
-##     59    73 4.363053710e+03 6.238e-11 8.773e-11 4.76e-06   G   3.43e-02
+##      0     1 5.783612887e+03
+##      1     6 5.384101690e+03 6.908e-02 4.127e-02 1.14e-01   G   0.00e+00
+##      2     7 5.034454484e+03 6.494e-02 4.072e-02 1.20e-01   G   0.00e+00
+##      3     8 4.539665468e+03 9.828e-02 7.965e-02 2.85e-01   S   0.00e+00
+##      4    10 4.447924845e+03 2.021e-02 1.560e-02 1.21e-01  S-G  0.00e+00
+##      5    11 4.419448017e+03 6.402e-03 4.424e-03 5.00e-02   G   0.00e+00
+##      6    12 4.406576343e+03 2.913e-03 1.624e-03 3.64e-02   G   0.00e+00
+##      7    13 4.397578827e+03 2.042e-03 1.098e-03 2.95e-02   G   0.00e+00
+##      8    14 4.390722890e+03 1.559e-03 8.274e-04 2.47e-02   G   0.00e+00
+##      9    15 4.385332661e+03 1.228e-03 6.484e-04 2.10e-02   G   0.00e+00
+##     10    16 4.381029659e+03 9.812e-04 5.166e-04 1.82e-02   G   0.00e+00
+##     11    17 4.371366410e+03 2.206e-03 7.724e-02 2.34e-01   S   4.64e-01
+##     12    40 4.361809015e+03 2.186e-03 5.082e+05 4.74e-02  S-G  5.57e+11
 ## 
-## ***** Relative function convergence *****
-## Additional convergence test using scaled estimation. Parameters will be
-##   scaled by their current estimates and additional iterations will be
-##   performed.
+## ***** False convergence *****
 ## 
-## BGW using analytic model derivatives supplied by caller...
+## Estimated parameters:
+##              Estimate
+## ASC_CAR        0.3224
+## ASC_TRAIN     -0.5806
+## ASC_SM         0.0000
+## B_COST        -1.7380
+## B_TIME        -3.3231
+## B_TIME_S       3.6122
 ## 
+## Final LL: -4361.809
 ## 
-## Iterates will be appended to: 
-##  output/Swissmetro_iterations.csv
-##     it    nf     F            RELDF    PRELDF    RELDX    MODEL stppar
-##      0     1 4.363053710e+03
-##      1     3 4.363053710e+03 7.720e-11 1.189e-10 1.23e-05   G   2.81e+02
-##      2     4 4.363053710e+03 4.950e-11 7.980e-11 9.66e-06   G   1.47e+02
+## WARNING: Estimation failed. No covariance matrix to compute. 
 ## 
-## ***** Relative function convergence *****
-## 
-## Estimated parameters with approximate standard errors from BHHH matrix:
-##              Estimate     BHHH se BHH t-ratio (0)
-## ASC_CAR        0.2807     0.03057           9.181
-## ASC_TRAIN     -0.5722     0.04782         -11.966
-## ASC_SM         0.0000          NA              NA
-## B_COST        -1.6502     0.02168         -76.106
-## B_TIME        -3.1647     0.18064         -17.519
-## B_TIME_S       3.7182     0.12943          28.728
-## 
-## Final LL: -4363.0537
+##   Current process will resume in 3 seconds unless interrupted by the
+##   user...
 ## 
 ## Calculating log-likelihood at equal shares (LL(0)) for applicable
 ##   models...
@@ -646,13 +592,14 @@ apollo_randCoeff = function(apollo_beta, apollo_inputs){
 ##   (LL(c)) for applicable models...
 ## Calculating LL of each model component...
 ## Calculating other model fit measures
-## Computing covariance matrix using analytical gradient.
-##  0%....25%....50%...100%
-## Negative definite Hessian with maximum eigenvalue: -22.640577
-## Computing score matrix...
 ## 
 ## Your model was estimated using the BGW algorithm. Please acknowledge
 ##   this by citing Bunch et al. (1993) - DOI 10.1145/151271.151279</code></pre>
+<pre class="r"><code>#unconditionals &lt;- apollo_unconditionals(model, apollo_probabilities, apollo_inputs) #actual values used for random coefficients, want to import them as a excel table
+
+#size of 752x100 because 100 draws and 752 = # of individuals
+
+#write.csv(unconditionals, &quot;random_coefficients_Apollo.csv&quot;) #import the coefficient into .cvs file, to export it to Biogeme</code></pre>
 </div>
 <div id="model-outputs" class="section level3">
 <h3>MODEL OUTPUTS</h3>
@@ -664,60 +611,52 @@ apollo_randCoeff = function(apollo_beta, apollo_inputs){
 ## 
 ## Model name                                  : Swissmetro
 ## Model description                           : Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space
-## Model run at                                : 2024-04-24 20:14:10
+## Model run at                                : 2024-05-01 12:03:04
 ## Estimation method                           : bgw
-## Model diagnosis                             : Relative function convergence
-## Optimisation diagnosis                      : Maximum found
-##      hessian properties                     : Negative definite
-##      maximum eigenvalue                     : -22.640577
-##      reciprocal of condition number         : 0.032934
+## Model diagnosis                             : False convergence
 ## Number of individuals                       : 752
 ## Number of rows in database                  : 6768
 ## Number of modelled outcomes                 : 6768
 ## 
 ## Number of cores used                        :  4 
-## Number of inter-individual draws            : 100 (halton)
+## Number of inter-individual draws            : 500 (halton)
 ## 
-## LL(start)                                   : -5782.84
+## LL(start)                                   : -5783.61
 ## LL at equal shares, LL(0)                   : -6964.66
 ## LL at observed shares, LL(C)                : -5865
-## LL(final)                                   : -4363.05
-## Rho-squared vs equal shares                  :  0.3735 
-## Adj.Rho-squared vs equal shares              :  0.3728 
-## Rho-squared vs observed shares               :  0.2561 
-## Adj.Rho-squared vs observed shares           :  0.2556 
-## AIC                                         :  8736.11 
-## BIC                                         :  8770.21 
+## LL(final)                                   : -4361.81
+## Rho-squared vs equal shares                  :  0.3737 
+## Adj.Rho-squared vs equal shares              :  0.373 
+## Rho-squared vs observed shares               :  0.2563 
+## Adj.Rho-squared vs observed shares           :  0.2558 
+## AIC                                         :  8733.62 
+## BIC                                         :  8767.72 
 ## 
 ## Estimated parameters                        : 5
-## Time taken (hh:mm:ss)                       :  00:01:4.7 
-##      pre-estimation                         :  00:00:12.81 
-##      estimation                             :  00:00:42.92 
-##           initial estimation                :  00:00:39.7 
-##           estimation after rescaling        :  00:00:3.22 
-##      post-estimation                        :  00:00:8.97 
-## Iterations                                  :  61  
-##      initial estimation                     :  59 
-##      estimation after rescaling             :  2 
+## Time taken (hh:mm:ss)                       :  00:01:1.14 
+##      pre-estimation                         :  00:00:30.74 
+##      estimation                             :  00:00:29.05 
+##      post-estimation                        :  00:00:1.35 
+## Iterations                                  :  12 (False convergence) 
 ## 
 ## Unconstrained optimisation.
 ## 
 ## Estimates:
 ##              Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
-## ASC_CAR        0.2807     0.05503       5.100      0.1042         2.694
-## ASC_TRAIN     -0.5722     0.07518      -7.611      0.1328        -4.308
+## ASC_CAR        0.3224          NA          NA          NA            NA
+## ASC_TRAIN     -0.5806          NA          NA          NA            NA
 ## ASC_SM         0.0000          NA          NA          NA            NA
-## B_COST        -1.6502     0.07720     -21.375      0.2898        -5.695
-## B_TIME        -3.1647     0.15288     -20.701      0.1888       -16.763
-## B_TIME_S       3.7182     0.16310      22.796      0.2240        16.597</code></pre>
+## B_COST        -1.7380          NA          NA          NA            NA
+## B_TIME        -3.3231          NA          NA          NA            NA
+## B_TIME_S       3.6122          NA          NA          NA            NA</code></pre>
 <pre class="r"><code>apollo_saveOutput(model) #(FORMATTED OUTPUT (TO FILE, using model name))</code></pre>
 <pre><code>## 
 ## Old result file &quot;output/Swissmetro_output.txt&quot; 
-##  renamed to: &quot;output/Swissmetro_OLD1_output.txt&quot;
+##  renamed to: &quot;output/Swissmetro_OLD13_output.txt&quot;
 ## Old result file &quot;output/Swissmetro_estimates.csv&quot; 
-##  renamed to: &quot;output/Swissmetro_OLD1_estimates.csv&quot;
+##  renamed to: &quot;output/Swissmetro_OLD13_estimates.csv&quot;
 ## Old result file &quot;output/Swissmetro_model.rds&quot; 
-##  renamed to: &quot;output/Swissmetro_OLD1_model.rds&quot;
+##  renamed to: &quot;output/Swissmetro_OLD13_model.rds&quot;
 ## Model output saved to output/Swissmetro_output.txt 
 ## Estimates saved to output/Swissmetro_estimates.csv 
 ## Model object saved to output/Swissmetro.rds</code></pre>

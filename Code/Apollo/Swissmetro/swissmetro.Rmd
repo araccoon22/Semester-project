@@ -1,5 +1,5 @@
 ---
-title: "Swissmetro"
+title: "Swissmetro - 1000 draws"
 output: html_document
 date: "2024-04-24"
 ---
@@ -105,7 +105,7 @@ set.seed(1)
 ### Set parameters for generating draws
 apollo_draws = list(
   interDrawsType = "halton", #differences btw individuals
-  interNDraws    = 100,
+  interNDraws    = 1000,
   interUnifDraws = c(),
   interNormDraws = c("draws"),  #Standard Normal dist draws
   intraDrawsType = "halton",
@@ -122,6 +122,7 @@ apollo_randCoeff = function(apollo_beta, apollo_inputs){
 
   return(randcoeff)
 }
+
 
 ```
 
@@ -184,11 +185,11 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
 
 model = apollo_estimate(apollo_beta, apollo_fixed,apollo_probabilities, apollo_inputs)
 
-unconditionals <- apollo_unconditionals(model, apollo_probabilities, apollo_inputs) #actual values used for random coefficients, want to import them as a excel table
+#unconditionals <- apollo_unconditionals(model, apollo_probabilities, apollo_inputs) #actual values used for random coefficients, want to import them as a excel table
 
 #size of 752x100 because 100 draws and 752 = # of individuals
 
-write.csv(unconditionals, "random_coefficients_Apollo.csv") #import the coefficient into .cvs file, to export it to Biogeme
+#write.csv(unconditionals, "random_coefficients_Apollo.csv") #import the coefficient into .cvs file, to export it to Biogeme
 
 
 

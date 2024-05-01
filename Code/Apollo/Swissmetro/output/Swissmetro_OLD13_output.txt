@@ -5,7 +5,7 @@ Please acknowledge the use of Apollo by citing Hess & Palma (2019)
 
 Model name                                  : Swissmetro
 Model description                           : Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space
-Model run at                                : 2024-05-01 12:12:08
+Model run at                                : 2024-05-01 11:59:13
 Estimation method                           : bgw
 Model diagnosis                             : False convergence
 Number of individuals                       : 752
@@ -13,36 +13,29 @@ Number of rows in database                  : 6768
 Number of modelled outcomes                 : 6768
 
 Number of cores used                        :  4 
-Number of inter-individual draws            : 1000 (halton)
+Number of inter-individual draws            : 500 (halton)
 
-LL(start)                                   : -5783.35
+LL(start)                                   : -5783.61
 LL at equal shares, LL(0)                   : -6964.66
 LL at observed shares, LL(C)                : -5865
-LL(final)                                   : -4361.65
+LL(final)                                   : -4361.81
 Rho-squared vs equal shares                  :  0.3737 
 Adj.Rho-squared vs equal shares              :  0.373 
 Rho-squared vs observed shares               :  0.2563 
 Adj.Rho-squared vs observed shares           :  0.2558 
-AIC                                         :  8733.3 
-BIC                                         :  8767.4 
+AIC                                         :  8733.62 
+BIC                                         :  8767.72 
 
 Estimated parameters                        : 5
-Time taken (hh:mm:ss)                       :  00:02:11.79 
-     pre-estimation                         :  00:00:59.83 
-     estimation                             :  00:01:9.21 
-     post-estimation                        :  00:00:2.75 
+Time taken (hh:mm:ss)                       :  00:01:15.81 
+     pre-estimation                         :  00:00:40.19 
+     estimation                             :  00:00:34.04 
+     post-estimation                        :  00:00:1.58 
 Iterations                                  :  12 (False convergence) 
 
 Unconstrained optimisation.
 
 Estimates:
-             Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
-ASC_CAR        0.3235          NA          NA          NA            NA
-ASC_TRAIN     -0.5814          NA          NA          NA            NA
-ASC_SM         0.0000          NA          NA          NA            NA
-B_COST        -1.7400          NA          NA          NA            NA
-B_TIME        -3.3420          NA          NA          NA            NA
-B_TIME_S       3.6107          NA          NA          NA            NA
 
 
 Overview of choices for MNL model component :
@@ -87,36 +80,8 @@ B_TIME           NA        NA        NA        NA        NA
 B_TIME_S         NA        NA        NA        NA        NA
 
  20 worst outliers in terms of lowest average per choice prediction:
-  ID Avg prob per choice
- 394         0.001808915
-  56         0.012022356
-  58         0.029353208
- 104         0.031664069
- 102         0.105023082
- 105         0.119675399
- 393         0.123448238
- 362         0.153763594
- 351         0.180661524
- 937         0.186082177
- 796         0.186615402
-  19         0.187660381
-  77         0.190537641
- 867         0.195500070
-  81         0.198139207
- 783         0.202212400
- 578         0.203954784
-  63         0.210606040
- 454         0.219180140
- 283         0.220386339
 
 Changes in parameter estimates from starting values:
-              Initial    Estimate  Difference
-ASC_CAR         0.000      0.3235      0.3235
-ASC_TRAIN       0.000     -0.5814     -0.5814
-ASC_SM          0.000      0.0000      0.0000
-B_COST          0.000     -1.7400     -1.7400
-B_TIME          0.000     -3.3420     -3.3420
-B_TIME_S        1.000      3.6107      2.6107
 
 Settings and functions used in model definition:
 
@@ -157,7 +122,7 @@ function(apollo_beta, apollo_inputs){
 
   return(randcoeff)
 }
-<bytecode: 0x0000024776e36238>
+<bytecode: 0x0000017529783aa0>
 
 
 apollo_probabilities

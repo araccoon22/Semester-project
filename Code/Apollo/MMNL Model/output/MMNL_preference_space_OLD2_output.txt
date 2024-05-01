@@ -5,7 +5,7 @@ Please acknowledge the use of Apollo by citing Hess & Palma (2019)
 
 Model name                                  : MMNL_preference_space
 Model description                           : Mixed logit model on Swiss route choice data, uncorrelated Lognormals in preference space
-Model run at                                : 2024-03-21 09:43:42
+Model run at                                : 2024-03-19 14:18:09
 Estimation method                           : bgw
 Model diagnosis                             : Relative function convergence
 Optimisation diagnosis                      : Maximum found
@@ -31,12 +31,12 @@ AIC                                         :  2904.7
 BIC                                         :  2953.97 
 
 Estimated parameters                        : 8
-Time taken (hh:mm:ss)                       :  00:03:25.16 
-     pre-estimation                         :  00:00:51.8 
-     estimation                             :  00:00:53.07 
-          initial estimation                :  00:00:43.71 
-          estimation after rescaling        :  00:00:9.36 
-     post-estimation                        :  00:01:40.29 
+Time taken (hh:mm:ss)                       :  00:03:29.94 
+     pre-estimation                         :  00:00:56.11 
+     estimation                             :  00:00:56.3 
+          initial estimation                :  00:00:48.34 
+          estimation after rescaling        :  00:00:7.95 
+     post-estimation                        :  00:01:37.54 
 Iterations                                  :  18  
      initial estimation                     :  17 
      estimation after rescaling             :  1 
@@ -121,7 +121,7 @@ function(apollo_beta, apollo_inputs){
 
   return(randcoeff)
 }
-<bytecode: 0x00000167744bf198>
+<bytecode: 0x00000183fc7211b8>
 
 
 apollo_probabilities
@@ -138,7 +138,7 @@ function(apollo_beta, apollo_inputs, functionality="estimate"){
 
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
-  V[["alt1"]] = asc + b_tt * tt1 + b_tc * tc1 + b_hw * hw1 + b_ch * ch1
+  V[["alt1"]] = b_tt * tt1 + b_tc * tc1 + b_hw * hw1 + b_ch * ch1
   V[["alt2"]] = b_tt * tt2 + b_tc * tc2 + b_hw * hw2 + b_ch * ch2
 
   ### Define settings for MNL model component
