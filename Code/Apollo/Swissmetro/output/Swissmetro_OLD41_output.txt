@@ -5,7 +5,7 @@ Please acknowledge the use of Apollo by citing Hess & Palma (2019)
 
 Model name                                  : Swissmetro
 Model description                           : Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space
-Model run at                                : 2024-05-12 12:39:12
+Model run at                                : 2024-05-12 12:38:11
 Estimation method                           : bfgs
 Model diagnosis                             : successful convergence
 Optimisation diagnosis                      : Maximum found
@@ -31,12 +31,12 @@ AIC                                         :  8279.39
 BIC                                         :  8333.95 
 
 Estimated parameters                        : 8
-Time taken (hh:mm:ss)                       :  00:00:45.7 
-     pre-estimation                         :  00:00:15.94 
-     estimation                             :  00:00:16.76 
-          initial estimation                :  00:00:15.65 
-          estimation after rescaling        :  00:00:1.12 
-     post-estimation                        :  00:00:12.99 
+Time taken (hh:mm:ss)                       :  00:00:45.78 
+     pre-estimation                         :  00:00:14.57 
+     estimation                             :  00:00:18.11 
+          initial estimation                :  00:00:16.86 
+          estimation after rescaling        :  00:00:1.26 
+     post-estimation                        :  00:00:13.11 
 Iterations                                  :  35  
      initial estimation                     :  34 
      estimation after rescaling             :  1 
@@ -244,7 +244,7 @@ function(apollo_beta, apollo_inputs){
 
   return(randcoeff)
 }
-<bytecode: 0x000001c45dd08bb8>
+<bytecode: 0x000001c0ba83eb48>
 
 
 apollo_probabilities

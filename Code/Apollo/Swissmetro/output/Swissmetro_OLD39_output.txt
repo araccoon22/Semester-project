@@ -5,7 +5,7 @@ Please acknowledge the use of Apollo by citing Hess & Palma (2019)
 
 Model name                                  : Swissmetro
 Model description                           : Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space
-Model run at                                : 2024-05-12 12:39:12
+Model run at                                : 2024-05-12 12:28:28
 Estimation method                           : bfgs
 Model diagnosis                             : successful convergence
 Optimisation diagnosis                      : Maximum found
@@ -31,12 +31,12 @@ AIC                                         :  8279.39
 BIC                                         :  8333.95 
 
 Estimated parameters                        : 8
-Time taken (hh:mm:ss)                       :  00:00:45.7 
-     pre-estimation                         :  00:00:15.94 
-     estimation                             :  00:00:16.76 
-          initial estimation                :  00:00:15.65 
-          estimation after rescaling        :  00:00:1.12 
-     post-estimation                        :  00:00:12.99 
+Time taken (hh:mm:ss)                       :  00:00:48.04 
+     pre-estimation                         :  00:00:15.51 
+     estimation                             :  00:00:17.76 
+          initial estimation                :  00:00:16.46 
+          estimation after rescaling        :  00:00:1.3 
+     post-estimation                        :  00:00:14.78 
 Iterations                                  :  35  
      initial estimation                     :  34 
      estimation after rescaling             :  1 
@@ -44,16 +44,6 @@ Iterations                                  :  35
 Unconstrained optimisation.
 
 Estimates:
-             Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
-ASC_CAR        0.3652      0.1028       3.554      0.1583        2.3070
-ASC_TRAIN      0.2885      0.1171       2.464      0.3272        0.8817
-ASC_SM         0.0000          NA          NA          NA            NA
-B_COST        -2.6806      0.1485     -18.049      0.3456       -7.7563
-B_COST_S      -0.5136      0.1023      -5.023      0.3724       -1.3793
-B_TIME        -4.0478      0.1844     -21.950      0.3990      -10.1461
-B_TIME_S       2.1803      0.1055      20.658      0.2068       10.5422
-SIGMA_V1      -1.3447      0.1834      -7.332      0.7477       -1.7984
-SIGMA_V2      -2.0752      0.1604     -12.939      0.6059       -3.4248
 
 
 Overview of choices for MNL model component :
@@ -66,119 +56,16 @@ Percentage chosen when available   13.42   60.43   31.57
 
 
 Classical covariance matrix:
-              ASC_CAR   ASC_TRAIN      B_COST    B_COST_S      B_TIME
-ASC_CAR      0.010560    0.005036  4.7162e-04   -0.001887    0.001668
-ASC_TRAIN    0.005036    0.013710   -0.005253    0.001781   -0.013267
-B_COST     4.7162e-04   -0.005253    0.022057   -0.001297    0.010345
-B_COST_S    -0.001887    0.001781   -0.001297    0.010457   -0.001265
-B_TIME       0.001668   -0.013267    0.010345   -0.001265    0.034007
-B_TIME_S  -9.5215e-04    0.006893   -0.005177  5.0051e-04   -0.018185
-SIGMA_V1     0.002460   -0.013645    0.015980   -0.004577    0.019401
-SIGMA_V2     0.001891   -0.009269    0.013267   -0.005193    0.013479
-             B_TIME_S    SIGMA_V1    SIGMA_V2
-ASC_CAR   -9.5215e-04    0.002460    0.001891
-ASC_TRAIN    0.006893   -0.013645   -0.009269
-B_COST      -0.005177    0.015980    0.013267
-B_COST_S   5.0051e-04   -0.004577   -0.005193
-B_TIME      -0.018185    0.019401    0.013479
-B_TIME_S     0.011140   -0.010197   -0.006551
-SIGMA_V1    -0.010197    0.033634    0.024978
-SIGMA_V2    -0.006551    0.024978    0.025724
 
 Robust covariance matrix:
-              ASC_CAR   ASC_TRAIN      B_COST    B_COST_S      B_TIME
-ASC_CAR      0.025065  5.0639e-04     0.01127    -0.01837    0.003066
-ASC_TRAIN  5.0639e-04     0.10705    -0.06118     0.08073   -0.109898
-B_COST       0.011270    -0.06118     0.11945    -0.05605    0.097293
-B_COST_S    -0.018371     0.08073    -0.05605     0.13865   -0.094791
-B_TIME       0.003066    -0.10990     0.09729    -0.09479    0.159165
-B_TIME_S    -0.002788     0.05423    -0.04778     0.04896   -0.081568
-SIGMA_V1     0.034044    -0.21862     0.16324    -0.20809    0.239701
-SIGMA_V2     0.020826    -0.17309     0.14065    -0.17602    0.192506
-             B_TIME_S    SIGMA_V1    SIGMA_V2
-ASC_CAR     -0.002788     0.03404     0.02083
-ASC_TRAIN    0.054228    -0.21862    -0.17309
-B_COST      -0.047780     0.16324     0.14065
-B_COST_S     0.048959    -0.20809    -0.17602
-B_TIME      -0.081568     0.23970     0.19251
-B_TIME_S     0.042774    -0.11820    -0.09248
-SIGMA_V1    -0.118199     0.55910     0.43319
-SIGMA_V2    -0.092476     0.43319     0.36716
 
 Classical correlation matrix:
-              ASC_CAR   ASC_TRAIN      B_COST    B_COST_S      B_TIME
-ASC_CAR       1.00000      0.4185     0.03090    -0.17957     0.08802
-ASC_TRAIN     0.41854      1.0000    -0.30207     0.14873    -0.61441
-B_COST        0.03090     -0.3021     1.00000    -0.08537     0.37771
-B_COST_S     -0.17957      0.1487    -0.08537     1.00000    -0.06710
-B_TIME        0.08802     -0.6144     0.37771    -0.06710     1.00000
-B_TIME_S     -0.08779      0.5578    -0.33027     0.04637    -0.93432
-SIGMA_V1      0.13052     -0.6354     0.58667    -0.24406     0.57365
-SIGMA_V2      0.11472     -0.4936     0.55696    -0.31662     0.45572
-             B_TIME_S    SIGMA_V1    SIGMA_V2
-ASC_CAR      -0.08779      0.1305      0.1147
-ASC_TRAIN     0.55781     -0.6354     -0.4936
-B_COST       -0.33027      0.5867      0.5570
-B_COST_S      0.04637     -0.2441     -0.3166
-B_TIME       -0.93432      0.5737      0.4557
-B_TIME_S      1.00000     -0.5268     -0.3870
-SIGMA_V1     -0.52680      1.0000      0.8492
-SIGMA_V2     -0.38697      0.8492      1.0000
 
 Robust correlation matrix:
-              ASC_CAR   ASC_TRAIN      B_COST    B_COST_S      B_TIME
-ASC_CAR      1.000000    0.009776      0.2060     -0.3116     0.04853
-ASC_TRAIN    0.009776    1.000000     -0.5410      0.6627    -0.84193
-B_COST       0.205974   -0.541029      1.0000     -0.4355     0.70562
-B_COST_S    -0.311628    0.662660     -0.4355      1.0000    -0.63808
-B_TIME       0.048534   -0.841926      0.7056     -0.6381     1.00000
-B_TIME_S    -0.085142    0.801390     -0.6685      0.6357    -0.98857
-SIGMA_V1     0.287580   -0.893621      0.6317     -0.7474     0.80353
-SIGMA_V2     0.217094   -0.873070      0.6716     -0.7802     0.79633
-             B_TIME_S    SIGMA_V1    SIGMA_V2
-ASC_CAR      -0.08514      0.2876      0.2171
-ASC_TRAIN     0.80139     -0.8936     -0.8731
-B_COST       -0.66845      0.6317      0.6716
-B_COST_S      0.63573     -0.7474     -0.7802
-B_TIME       -0.98857      0.8035      0.7963
-B_TIME_S      1.00000     -0.7643     -0.7379
-SIGMA_V1     -0.76433      1.0000      0.9561
-SIGMA_V2     -0.73793      0.9561      1.0000
 
  20 worst outliers in terms of lowest average per choice prediction:
-  ID Avg prob per choice
- 394          0.01248918
- 476          0.02439095
- 360          0.06171511
-  58          0.06994871
- 356          0.07945301
- 389          0.11367713
- 783          0.11532471
- 362          0.12147285
- 576          0.12311244
-  63          0.13458704
- 937          0.13521077
- 276          0.13744365
- 454          0.14687060
- 681          0.17748673
-  93          0.18398981
- 326          0.18694914
- 318          0.18933869
- 283          0.18953634
- 796          0.19110188
- 335          0.19394957
 
 Changes in parameter estimates from starting values:
-              Initial    Estimate  Difference
-ASC_CAR         0.000      0.3652      0.3652
-ASC_TRAIN       0.000      0.2885      0.2885
-ASC_SM          0.000      0.0000      0.0000
-B_COST          0.000     -2.6806     -2.6806
-B_COST_S        1.000     -0.5136     -1.5136
-B_TIME          0.000     -4.0478     -4.0478
-B_TIME_S        1.000      2.1803      1.1803
-SIGMA_V1        1.000     -1.3447     -2.3447
-SIGMA_V2        1.000     -2.0752     -3.0752
 
 Settings and functions used in model definition:
 
@@ -241,10 +128,12 @@ function(apollo_beta, apollo_inputs){
 
   randcoeff[["B_TIME_RND"]] = B_TIME + B_TIME_S * draws
   randcoeff[["B_COST_RND"]] = B_COST + B_COST_S * draws
+  randcoeff[["SIGMA_V1_RND"]] = SIGMA_V1 * draws
+  randcoeff[["SIGMA_V2_RND"]] = SIGMA_V2 * draws
 
   return(randcoeff)
 }
-<bytecode: 0x000001c45dd08bb8>
+<bytecode: 0x0000021d3813dbf0>
 
 
 apollo_probabilities
@@ -261,8 +150,8 @@ function(apollo_beta, apollo_inputs, functionality="estimate"){
 
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
-  V[["alt1"]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED + SIGMA_V1 * draws
-  V[["alt2"]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED + SIGMA_V2 * draws
+  V[["alt1"]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED + SIGMA_V1_RND
+  V[["alt2"]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED + SIGMA_V2_RND
   V[["alt3"]] = ASC_CAR + B_TIME_RND * CAR_TT_SCALED + B_COST_RND * CAR_CO_SCALED
 
 

@@ -12,7 +12,7 @@
 
 <meta name="date" content="2024-04-24" />
 
-<title>Swissmetro 2 - 500 draws BFGS</title>
+<title>Swissmetro 2 - 100 draws BFGS</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,7 +349,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Swissmetro 2 - 500 draws BFGS</h1>
+<h1 class="title toc-ignore">Swissmetro 2 - 100 draws BFGS</h1>
 <h4 class="date">2024-04-24</h4>
 
 </div>
@@ -444,7 +444,9 @@ apollo_beta = c(ASC_CAR        = 0,
                 B_COST         = 0,
                 B_COST_S       = 1,
                 B_TIME         = 0,
-                B_TIME_S       = 1)
+                B_TIME_S       = 1,
+                SIGMA_V1       = 1,
+                SIGMA_V2       = 1)
 
 ### Vector with names (in quotes) of parameters to be kept fixed at their starting value in apollo_beta, use apollo_beta_fixed = c() if none
 
@@ -457,7 +459,7 @@ apollo_fixed = c(&quot;ASC_SM&quot;)</code></pre>
 ### Set parameters for generating draws
 apollo_draws = list(
   interDrawsType = &quot;halton&quot;, #differences btw individuals
-  interNDraws    = 500,
+  interNDraws    = 100,
   interUnifDraws = c(),
   interNormDraws = c(&quot;draws&quot;),  #Standard Normal dist draws
   intraDrawsType = &quot;halton&quot;,
@@ -500,8 +502,8 @@ apollo_randCoeff = function(apollo_beta, apollo_inputs){
 
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
-  V[[&quot;alt1&quot;]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED
-  V[[&quot;alt2&quot;]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED
+  V[[&quot;alt1&quot;]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED + SIGMA_V1 * draws
+  V[[&quot;alt2&quot;]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED + SIGMA_V2 * draws
   V[[&quot;alt3&quot;]] = ASC_CAR + B_TIME_RND * CAR_TT_SCALED + B_COST_RND * CAR_CO_SCALED
 
 
@@ -554,55 +556,68 @@ model = apollo_estimate(apollo_beta, apollo_fixed,apollo_probabilities, apollo_i
 ## 
 ## Testing influence of parameters
 ## Starting main estimation
-## Initial function value: -5610.459 
+## Initial function value: -5965.361 
 ## Initial gradient value:
-##    ASC_CAR  ASC_TRAIN     B_COST   B_COST_S     B_TIME   B_TIME_S 
-##  -22.50236 -842.67185   17.29848  -22.71619 -804.97678 1017.51080 
-## initial  value 5610.458988 
-## iter   2 value 4832.351732
-## iter   3 value 4513.129614
-## iter   4 value 4436.942214
-## iter   5 value 4402.615603
-## iter   6 value 4387.807372
-## iter   7 value 4378.504137
-## iter   8 value 4283.024004
-## iter   9 value 4271.448959
-## iter  10 value 4269.012988
-## iter  11 value 4267.583353
-## iter  12 value 4265.476729
-## iter  13 value 4264.221409
-## iter  14 value 4263.907254
-## iter  15 value 4263.895353
-## iter  16 value 4263.886861
-## iter  17 value 4263.881852
-## iter  18 value 4263.877032
-## iter  19 value 4263.876633
-## iter  20 value 4263.875554
-## iter  21 value 4263.872228
-## iter  22 value 4263.871397
-## iter  22 value 4263.871397
-## iter  22 value 4263.871397
-## final  value 4263.871397 
+##     ASC_CAR   ASC_TRAIN      B_COST    B_COST_S      B_TIME    B_TIME_S 
+##  -738.07950  -867.73344   108.21253   -70.82742 -1335.99880  1010.19371 
+##    SIGMA_V1    SIGMA_V2 
+##   552.32884 -1050.25487 
+## initial  value 5965.360507 
+## iter   2 value 5783.256999
+## iter   3 value 4468.082969
+## iter   4 value 4456.161066
+## iter   5 value 4367.251287
+## iter   6 value 4333.098256
+## iter   7 value 4302.237072
+## iter   8 value 4256.259686
+## iter   9 value 4253.538837
+## iter  10 value 4219.771602
+## iter  11 value 4186.134555
+## iter  12 value 4181.114393
+## iter  13 value 4174.774839
+## iter  14 value 4159.437133
+## iter  15 value 4150.457399
+## iter  16 value 4136.067662
+## iter  17 value 4134.462668
+## iter  18 value 4134.020811
+## iter  19 value 4133.753816
+## iter  20 value 4133.588870
+## iter  21 value 4133.552079
+## iter  22 value 4132.799584
+## iter  23 value 4132.797206
+## iter  24 value 4132.776361
+## iter  25 value 4132.710100
+## iter  26 value 4132.553667
+## iter  27 value 4132.251695
+## iter  28 value 4132.065412
+## iter  29 value 4131.718339
+## iter  30 value 4131.694196
+## iter  31 value 4131.693126
+## iter  31 value 4131.693116
+## iter  31 value 4131.693116
+## final  value 4131.693116 
 ## converged
 ## Additional convergence test using scaled estimation. Parameters will be
 ##   scaled by their current estimates and additional iterations will be
 ##   performed.
-## initial  value 4263.871397 
-## iter   1 value 4263.871397
-## final  value 4263.871397 
+## initial  value 4131.693116 
+## iter   1 value 4131.693116
+## final  value 4131.693116 
 ## converged
 ## 
 ## Estimated parameters with approximate standard errors from BHHH matrix:
 ##              Estimate     BHHH se BHH t-ratio (0)
-## ASC_CAR        0.1857     0.02975           6.241
-## ASC_TRAIN     -0.5281     0.04494         -11.751
+## ASC_CAR        0.3652     0.08852           4.126
+## ASC_TRAIN      0.2885     0.06456           4.468
 ## ASC_SM         0.0000          NA              NA
-## B_COST        -2.4960     0.09579         -26.057
-## B_COST_S       1.6892     0.07852          21.512
-## B_TIME        -3.5731     0.19362         -18.454
-## B_TIME_S       3.8988     0.15623          24.956
+## B_COST        -2.6806     0.07512         -35.687
+## B_COST_S      -0.5136     0.04385         -11.713
+## B_TIME        -4.0478     0.13837         -29.254
+## B_TIME_S       2.1803     0.09369          23.271
+## SIGMA_V1      -1.3447     0.06941         -19.373
+## SIGMA_V2      -2.0752     0.06915         -30.010
 ## 
-## Final LL: -4263.8714
+## Final LL: -4131.6931
 ## 
 ## Calculating log-likelihood at equal shares (LL(0)) for applicable
 ##   models...
@@ -612,7 +627,7 @@ model = apollo_estimate(apollo_beta, apollo_fixed,apollo_probabilities, apollo_i
 ## Calculating other model fit measures
 ## Computing covariance matrix using analytical gradient.
 ##  0%....25%....50%....75%.100%
-## Negative definite Hessian with maximum eigenvalue: -15.45168</code></pre>
+## Negative definite Hessian with maximum eigenvalue: -10.828992</code></pre>
 <pre class="r"><code>#unconditionals &lt;- apollo_unconditionals(model, apollo_probabilities, apollo_inputs) #actual values used for random coefficients, want to import them as a excel table</code></pre>
 </div>
 <div id="model-outputs" class="section level3">
@@ -625,61 +640,63 @@ model = apollo_estimate(apollo_beta, apollo_fixed,apollo_probabilities, apollo_i
 ## 
 ## Model name                                  : Swissmetro
 ## Model description                           : Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space
-## Model run at                                : 2024-05-10 13:58:47
+## Model run at                                : 2024-05-12 12:39:12
 ## Estimation method                           : bfgs
 ## Model diagnosis                             : successful convergence
 ## Optimisation diagnosis                      : Maximum found
 ##      hessian properties                     : Negative definite
-##      maximum eigenvalue                     : -15.45168
-##      reciprocal of condition number         : 0.0223292
+##      maximum eigenvalue                     : -10.828992
+##      reciprocal of condition number         : 0.0105806
 ## Number of individuals                       : 752
 ## Number of rows in database                  : 6768
 ## Number of modelled outcomes                 : 6768
 ## 
 ## Number of cores used                        :  4 
-## Number of inter-individual draws            : 500 (halton)
+## Number of inter-individual draws            : 100 (halton)
 ## 
-## LL(start)                                   : -5610.46
+## LL(start)                                   : -5965.36
 ## LL at equal shares, LL(0)                   : -6964.66
 ## LL at observed shares, LL(C)                : -5865
-## LL(final)                                   : -4263.87
-## Rho-squared vs equal shares                  :  0.3878 
-## Adj.Rho-squared vs equal shares              :  0.3869 
-## Rho-squared vs observed shares               :  0.273 
-## Adj.Rho-squared vs observed shares           :  0.2723 
-## AIC                                         :  8539.74 
-## BIC                                         :  8580.66 
+## LL(final)                                   : -4131.69
+## Rho-squared vs equal shares                  :  0.4068 
+## Adj.Rho-squared vs equal shares              :  0.4056 
+## Rho-squared vs observed shares               :  0.2955 
+## Adj.Rho-squared vs observed shares           :  0.2945 
+## AIC                                         :  8279.39 
+## BIC                                         :  8333.95 
 ## 
-## Estimated parameters                        : 6
-## Time taken (hh:mm:ss)                       :  00:02:8.6 
-##      pre-estimation                         :  00:00:41.4 
-##      estimation                             :  00:00:48.86 
-##           initial estimation                :  00:00:43.71 
-##           estimation after rescaling        :  00:00:5.15 
-##      post-estimation                        :  00:00:38.34 
-## Iterations                                  :  26  
-##      initial estimation                     :  25 
+## Estimated parameters                        : 8
+## Time taken (hh:mm:ss)                       :  00:00:45.7 
+##      pre-estimation                         :  00:00:15.94 
+##      estimation                             :  00:00:16.76 
+##           initial estimation                :  00:00:15.65 
+##           estimation after rescaling        :  00:00:1.12 
+##      post-estimation                        :  00:00:12.99 
+## Iterations                                  :  35  
+##      initial estimation                     :  34 
 ##      estimation after rescaling             :  1 
 ## 
 ## Unconstrained optimisation.
 ## 
 ## Estimates:
 ##              Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
-## ASC_CAR        0.1857     0.05924       3.134      0.1189         1.561
-## ASC_TRAIN     -0.5281     0.08334      -6.337      0.1559        -3.387
+## ASC_CAR        0.3652      0.1028       3.554      0.1583        2.3070
+## ASC_TRAIN      0.2885      0.1171       2.464      0.3272        0.8817
 ## ASC_SM         0.0000          NA          NA          NA            NA
-## B_COST        -2.4960     0.11755     -21.234      0.1671       -14.938
-## B_COST_S       1.6892     0.11439      14.767      0.2223         7.600
-## B_TIME        -3.5731     0.21919     -16.301      0.2760       -12.948
-## B_TIME_S       3.8988     0.19558      19.934      0.2600        14.995</code></pre>
+## B_COST        -2.6806      0.1485     -18.049      0.3456       -7.7563
+## B_COST_S      -0.5136      0.1023      -5.023      0.3724       -1.3793
+## B_TIME        -4.0478      0.1844     -21.950      0.3990      -10.1461
+## B_TIME_S       2.1803      0.1055      20.658      0.2068       10.5422
+## SIGMA_V1      -1.3447      0.1834      -7.332      0.7477       -1.7984
+## SIGMA_V2      -2.0752      0.1604     -12.939      0.6059       -3.4248</code></pre>
 <pre class="r"><code>apollo_saveOutput(model) #(FORMATTED OUTPUT (TO FILE, using model name))</code></pre>
 <pre><code>## 
 ## Old result file &quot;output/Swissmetro_output.txt&quot; 
-##  renamed to: &quot;output/Swissmetro_OLD36_output.txt&quot;
+##  renamed to: &quot;output/Swissmetro_OLD41_output.txt&quot;
 ## Old result file &quot;output/Swissmetro_estimates.csv&quot; 
-##  renamed to: &quot;output/Swissmetro_OLD36_estimates.csv&quot;
+##  renamed to: &quot;output/Swissmetro_OLD41_estimates.csv&quot;
 ## Old result file &quot;output/Swissmetro_model.rds&quot; 
-##  renamed to: &quot;output/Swissmetro_OLD36_model.rds&quot;
+##  renamed to: &quot;output/Swissmetro_OLD41_model.rds&quot;
 ## Model output saved to output/Swissmetro_output.txt 
 ## Estimates saved to output/Swissmetro_estimates.csv 
 ## Model object saved to output/Swissmetro.rds</code></pre>

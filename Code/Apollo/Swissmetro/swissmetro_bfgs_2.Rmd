@@ -1,5 +1,5 @@
 ---
-title: "Swissmetro 2 - 500 draws BFGS"
+title: "Swissmetro 2 - 100 draws BFGS"
 output: html_document
 date: "2024-04-24"
 ---
@@ -90,7 +90,9 @@ apollo_beta = c(ASC_CAR        = 0,
                 B_COST         = 0,
                 B_COST_S       = 1,
                 B_TIME         = 0,
-                B_TIME_S       = 1)
+                B_TIME_S       = 1,
+                SIGMA_V1       = 1,
+                SIGMA_V2       = 1)
 
 ### Vector with names (in quotes) of parameters to be kept fixed at their starting value in apollo_beta, use apollo_beta_fixed = c() if none
 
@@ -106,7 +108,7 @@ set.seed(1)
 ### Set parameters for generating draws
 apollo_draws = list(
   interDrawsType = "halton", #differences btw individuals
-  interNDraws    = 500,
+  interNDraws    = 100,
   interUnifDraws = c(),
   interNormDraws = c("draws"),  #Standard Normal dist draws
   intraDrawsType = "halton",
@@ -151,8 +153,8 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
 
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
-  V[["alt1"]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED
-  V[["alt2"]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED
+  V[["alt1"]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED + SIGMA_V1 * draws
+  V[["alt2"]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED + SIGMA_V2 * draws
   V[["alt3"]] = ASC_CAR + B_TIME_RND * CAR_TT_SCALED + B_COST_RND * CAR_CO_SCALED
 
 
