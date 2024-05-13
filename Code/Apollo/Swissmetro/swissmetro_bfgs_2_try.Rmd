@@ -1,5 +1,5 @@
 ---
-title: "Swissmetro 2 - 100 draws BFGS"
+title: "Swissmetro 2 try - 100 draws BFGS"
 output: html_document
 date: "2024-04-24"
 ---
@@ -7,6 +7,11 @@ date: "2024-04-24"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
+Because of random coefficients issues, we are trying to just have 2 random coefficients in this model.
+They are defined for time and cost.
+
 
 ```{r library and settings}
 
@@ -90,9 +95,7 @@ apollo_beta = c(ASC_CAR        = 0,
                 B_COST         = 0,
                 B_COST_S       = 1,
                 B_TIME         = 0,
-                B_TIME_S       = 1,
-                SIGMA_V1       = 1,
-                SIGMA_V2       = 1)
+                B_TIME_S       = 1)
 
 ### Vector with names (in quotes) of parameters to be kept fixed at their starting value in apollo_beta, use apollo_beta_fixed = c() if none
 
@@ -110,7 +113,7 @@ apollo_draws = list(
   interDrawsType = "halton", #differences btw individuals
   interNDraws    = 100,
   interUnifDraws = c(),
-  interNormDraws = c("draws_t", "draws_c", "draws_1", "draws_2"),  #Standard Normal dist draws
+  interNormDraws = c("draws_t", "draws_c"),  #Standard Normal dist draws
   intraDrawsType = "halton",
   intraNDraws    = 0,
   intraUnifDraws = c(),
@@ -123,8 +126,6 @@ apollo_randCoeff = function(apollo_beta, apollo_inputs){
 
   randcoeff[["B_TIME_RND"]] = B_TIME + B_TIME_S * draws_t
   randcoeff[["B_COST_RND"]] = B_COST + B_COST_S * draws_c
-  randcoeff[["SIGMA_V1_RND"]] = SIGMA_V1 * draws_1
-  randcoeff[["SIGMA_V2_RND"]] = SIGMA_V2 * draws_2
 
   return(randcoeff)
 }
@@ -155,8 +156,8 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
 
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
-  V[["alt1"]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED + SIGMA_V1_RND
-  V[["alt2"]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED + SIGMA_V2_RND
+  V[["alt1"]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED 
+  V[["alt2"]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED
   V[["alt3"]] = ASC_CAR + B_TIME_RND * CAR_TT_SCALED + B_COST_RND * CAR_CO_SCALED
 
 
