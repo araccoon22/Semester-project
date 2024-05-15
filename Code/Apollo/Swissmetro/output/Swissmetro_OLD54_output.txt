@@ -5,13 +5,13 @@ Please acknowledge the use of Apollo by citing Hess & Palma (2019)
 
 Model name                                  : Swissmetro
 Model description                           : Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space
-Model run at                                : 2024-05-14 11:15:39
+Model run at                                : 2024-05-13 13:42:20
 Estimation method                           : bfgs
 Model diagnosis                             : successful convergence
 Optimisation diagnosis                      : Maximum found
      hessian properties                     : Negative definite
-     maximum eigenvalue                     : -7.898934
-     reciprocal of condition number         : 0.0182098
+     maximum eigenvalue                     : -18.115685
+     reciprocal of condition number         : 0.01924
 Number of individuals                       : 752
 Number of rows in database                  : 6768
 Number of modelled outcomes                 : 6768
@@ -19,26 +19,26 @@ Number of modelled outcomes                 : 6768
 Number of cores used                        :  4 
 Number of inter-individual draws            : 100 (halton)
 
-LL(start)                                   : -5529.1
+LL(start)                                   : -6671.65
 LL at equal shares, LL(0)                   : -6964.66
 LL at observed shares, LL(C)                : -5865
-LL(final)                                   : -3923.96
-Rho-squared vs equal shares                  :  0.4366 
-Adj.Rho-squared vs equal shares              :  0.4357 
-Rho-squared vs observed shares               :  0.331 
-Adj.Rho-squared vs observed shares           :  0.3303 
-AIC                                         :  7859.92 
-BIC                                         :  7900.84 
+LL(final)                                   : -4913.17
+Rho-squared vs equal shares                  :  0.2946 
+Adj.Rho-squared vs equal shares              :  0.2938 
+Rho-squared vs observed shares               :  0.1623 
+Adj.Rho-squared vs observed shares           :  0.1618 
+AIC                                         :  9836.34 
+BIC                                         :  9870.44 
 
-Estimated parameters                        : 6
-Time taken (hh:mm:ss)                       :  00:00:44.73 
-     pre-estimation                         :  00:00:16.81 
-     estimation                             :  00:00:16.83 
-          initial estimation                :  00:00:15.39 
-          estimation after rescaling        :  00:00:1.43 
-     post-estimation                        :  00:00:11.09 
-Iterations                                  :  32  
-     initial estimation                     :  31 
+Estimated parameters                        : 5
+Time taken (hh:mm:ss)                       :  00:00:30.63 
+     pre-estimation                         :  00:00:13.29 
+     estimation                             :  00:00:10.81 
+          initial estimation                :  00:00:9.85 
+          estimation after rescaling        :  00:00:0.96 
+     post-estimation                        :  00:00:6.53 
+Iterations                                  :  23  
+     initial estimation                     :  22 
      estimation after rescaling             :  1 
 
 Unconstrained optimisation.
@@ -99,22 +99,20 @@ numerical jacobian of LL analytical gradient
 Scaling in estimation
 ---------------------
               Value
-ASC_CAR   0.3321922
-ASC_TRAIN 0.4453654
-B_COST    4.0161708
-B_COST_S  4.8451148
-B_TIME    4.3477495
-B_TIME_S  4.5274115
+ASC_CAR   0.2448838
+ASC_TRAIN 0.6094663
+B_COST    2.1872120
+B_COST_S  3.6291938
+B_TIME    1.6319245
 
 Scaling used in computing Hessian
 ---------------------------------
               Value
-ASC_CAR   0.3321922
-ASC_TRAIN 0.4453654
-B_COST    4.0161683
-B_COST_S  4.8451167
-B_TIME    4.3477531
-B_TIME_S  4.5274103
+ASC_CAR   0.2448844
+ASC_TRAIN 0.6094636
+B_COST    2.1873173
+B_COST_S  3.6290048
+B_TIME    1.6319048
 
 
 apollo_randCoeff
@@ -124,11 +122,10 @@ function(apollo_beta, apollo_inputs){
 
 
   randcoeff[["B_COST_RND"]] = B_COST + B_COST_S * draws_c
-  randcoeff[["B_TIME_RND"]] = B_TIME + B_TIME_S * draws_t
 
   return(randcoeff)
 }
-<bytecode: 0x000001f9abd7ea18>
+<bytecode: 0x000001c5fa41db38>
 
 
 apollo_probabilities
@@ -145,9 +142,9 @@ function(apollo_beta, apollo_inputs, functionality="estimate"){
 
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
-  V[["alt1"]] = ASC_TRAIN + B_TIME_RND * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED 
-  V[["alt2"]] = ASC_SM + B_TIME_RND * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED 
-  V[["alt3"]] = ASC_CAR + B_TIME_RND * CAR_TT_SCALED + B_COST_RND * CAR_CO_SCALED
+  V[["alt1"]] = ASC_TRAIN + B_TIME * TRAIN_TT_SCALED + B_COST_RND * TRAIN_COST_SCALED 
+  V[["alt2"]] = ASC_SM + B_TIME * SM_TT_SCALED + B_COST_RND * SM_COST_SCALED 
+  V[["alt3"]] = ASC_CAR + B_TIME * CAR_TT_SCALED + B_COST_RND * CAR_CO_SCALED
 
 
   ### Define settings for MNL model component

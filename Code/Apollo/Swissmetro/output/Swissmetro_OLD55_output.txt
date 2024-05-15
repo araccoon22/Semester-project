@@ -5,7 +5,7 @@ Please acknowledge the use of Apollo by citing Hess & Palma (2019)
 
 Model name                                  : Swissmetro
 Model description                           : Mixed logit model on Swissmetro, uncorrelated Lognormals in preference space
-Model run at                                : 2024-05-14 11:15:39
+Model run at                                : 2024-05-13 13:51:14
 Estimation method                           : bfgs
 Model diagnosis                             : successful convergence
 Optimisation diagnosis                      : Maximum found
@@ -31,12 +31,12 @@ AIC                                         :  7859.92
 BIC                                         :  7900.84 
 
 Estimated parameters                        : 6
-Time taken (hh:mm:ss)                       :  00:00:44.73 
-     pre-estimation                         :  00:00:16.81 
-     estimation                             :  00:00:16.83 
-          initial estimation                :  00:00:15.39 
-          estimation after rescaling        :  00:00:1.43 
-     post-estimation                        :  00:00:11.09 
+Time taken (hh:mm:ss)                       :  00:01:7.94 
+     pre-estimation                         :  00:00:42.36 
+     estimation                             :  00:00:14.28 
+          initial estimation                :  00:00:13 
+          estimation after rescaling        :  00:00:1.29 
+     post-estimation                        :  00:00:11.3 
 Iterations                                  :  32  
      initial estimation                     :  31 
      estimation after rescaling             :  1 
@@ -44,6 +44,14 @@ Iterations                                  :  32
 Unconstrained optimisation.
 
 Estimates:
+             Estimate        s.e.   t.rat.(0)    Rob.s.e. Rob.t.rat.(0)
+ASC_CAR        0.3322     0.07410       4.483      0.1384         2.399
+ASC_TRAIN     -0.4454     0.08826      -5.046      0.1427        -3.121
+ASC_SM         0.0000          NA          NA          NA            NA
+B_COST        -4.0162     0.22043     -18.219      0.2376       -16.901
+B_COST_S       4.8451     0.25990      18.642      0.2740        17.683
+B_TIME        -4.3478     0.18456     -23.558      0.2204       -19.730
+B_TIME_S       4.5274     0.18902      23.952      0.2283        19.832
 
 
 Overview of choices for MNL model component :
@@ -56,16 +64,101 @@ Percentage chosen when available   13.42   60.43   31.57
 
 
 Classical covariance matrix:
+              ASC_CAR   ASC_TRAIN      B_COST    B_COST_S      B_TIME
+ASC_CAR      0.005491    0.003481  2.6942e-04    0.001159   -0.004177
+ASC_TRAIN    0.003481    0.007790  9.9280e-04   9.351e-05   -0.003627
+B_COST     2.6942e-04  9.9280e-04     0.04859   -0.044414    0.016886
+B_COST_S     0.001159   9.351e-05    -0.04441    0.067549   -0.018661
+B_TIME      -0.004177   -0.003627     0.01689   -0.018661    0.034061
+B_TIME_S     0.003705    0.002732    -0.01747    0.020540   -0.032443
+             B_TIME_S
+ASC_CAR      0.003705
+ASC_TRAIN    0.002732
+B_COST      -0.017472
+B_COST_S     0.020540
+B_TIME      -0.032443
+B_TIME_S     0.035730
 
 Robust covariance matrix:
+              ASC_CAR   ASC_TRAIN      B_COST    B_COST_S      B_TIME
+ASC_CAR      0.019168    0.010217    0.002011    0.002936    -0.01229
+ASC_TRAIN    0.010217    0.020359   -0.001271    0.006251    -0.01206
+B_COST       0.002011   -0.001271    0.056467   -0.058644     0.03009
+B_COST_S     0.002936    0.006251   -0.058644    0.075073    -0.03469
+B_TIME      -0.012289   -0.012063    0.030090   -0.034689     0.04856
+B_TIME_S     0.011353    0.011570   -0.032062    0.037629    -0.04973
+             B_TIME_S
+ASC_CAR       0.01135
+ASC_TRAIN     0.01157
+B_COST       -0.03206
+B_COST_S      0.03763
+B_TIME       -0.04973
+B_TIME_S      0.05211
 
 Classical correlation matrix:
+              ASC_CAR   ASC_TRAIN      B_COST    B_COST_S      B_TIME
+ASC_CAR       1.00000    0.532194     0.01649    0.060205     -0.3054
+ASC_TRAIN     0.53219    1.000000     0.05103    0.004076     -0.2226
+B_COST        0.01649    0.051027     1.00000   -0.775229      0.4151
+B_COST_S      0.06020    0.004076    -0.77523    1.000000     -0.3890
+B_TIME       -0.30544   -0.222631     0.41508   -0.389034      1.0000
+B_TIME_S      0.26450    0.163723    -0.41933    0.418090     -0.9300
+             B_TIME_S
+ASC_CAR        0.2645
+ASC_TRAIN      0.1637
+B_COST        -0.4193
+B_COST_S       0.4181
+B_TIME        -0.9300
+B_TIME_S       1.0000
 
 Robust correlation matrix:
+              ASC_CAR   ASC_TRAIN      B_COST    B_COST_S      B_TIME
+ASC_CAR       1.00000     0.51721     0.06112     0.07740     -0.4028
+ASC_TRAIN     0.51721     1.00000    -0.03748     0.15989     -0.3836
+B_COST        0.06112    -0.03748     1.00000    -0.90071      0.5746
+B_COST_S      0.07740     0.15989    -0.90071     1.00000     -0.5745
+B_TIME       -0.40280    -0.38364     0.57464    -0.57454      1.0000
+B_TIME_S      0.35920     0.35522    -0.59105     0.60160     -0.9886
+             B_TIME_S
+ASC_CAR        0.3592
+ASC_TRAIN      0.3552
+B_COST        -0.5910
+B_COST_S       0.6016
+B_TIME        -0.9886
+B_TIME_S       1.0000
 
  20 worst outliers in terms of lowest average per choice prediction:
+  ID Avg prob per choice
+ 394           0.1748448
+ 362           0.1884305
+  19           0.1958321
+  58           0.2067346
+  23           0.2070923
+ 283           0.2088759
+ 389           0.2095343
+ 783           0.2134403
+  63           0.2243526
+ 352           0.2283447
+ 843           0.2402696
+ 351           0.2428723
+ 321           0.2478771
+ 681           0.2484468
+ 341           0.2484719
+ 360           0.2532342
+ 101           0.2572952
+  87           0.2577952
+ 739           0.2594657
+ 746           0.2599363
 
 Changes in parameter estimates from starting values:
+              Initial    Estimate  Difference
+ASC_CAR         0.000      0.3322      0.3322
+ASC_TRAIN       0.000     -0.4454     -0.4454
+ASC_SM          0.000      0.0000      0.0000
+B_COST          0.000     -4.0162     -4.0162
+B_COST_S        1.000      4.8451      3.8451
+B_TIME          0.000     -4.3478     -4.3478
+B_TIME_S        1.000      4.5274      3.5274
 
 Settings and functions used in model definition:
 
@@ -128,7 +221,7 @@ function(apollo_beta, apollo_inputs){
 
   return(randcoeff)
 }
-<bytecode: 0x000001f9abd7ea18>
+<bytecode: 0x000002c7fd61b248>
 
 
 apollo_probabilities
