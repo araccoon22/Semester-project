@@ -1,0 +1,84 @@
+---
+title: "CPU/RAM curves"
+output: html_document
+date: "2024-03-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Preparing the data:
+
+```{r}
+# Load required libraries
+library(ggplot2)
+
+# Read the CSV file
+data_apollo <- read.csv("C:\\Users\\alexi\\Desktop\\GITS\\Semester-project\\Code\\CPU - RAM\\cpu_ram_usage_swissmetro_2_apollo_sorted.csv")
+colnames(data_apollo) <- c("Time", "CPU", "RAM")
+
+# Read the CSV file
+data_biogeme <- read.csv("C:\\Users\\alexi\\Desktop\\GITS\\Semester-project\\Code\\CPU - RAM\\cpu_ram_usage_swissmetro_2_biogeme_sorted.csv")
+colnames(data_biogeme) <- c("Time", "CPU", "RAM")
+```
+
+Plotting for Apollo:
+
+```{r} 
+
+# Plot using ggplot2
+ggplot(data_apollo, aes(x = Time, group = 1)) +
+  geom_line(aes(y = CPU, color = "CPU")) +
+  geom_line(aes(y = RAM, color = "RAM")) +
+  labs(x = "Time Passed (seconds)", y = "Usage (%)", color = "Metric") +
+  scale_color_manual(values = c("CPU" = "red", "RAM" = "blue")) +
+  ggtitle("CPU and RAM Usage Over Time (Apollo)") +
+  theme_minimal()
+
+```
+
+
+Plotting for Biogeme:
+
+```{r} 
+
+
+# Plot using ggplot2
+ggplot(data_biogeme, aes(x = Time, group = 1)) +
+  geom_line(aes(y = CPU, color = "CPU")) +
+  geom_line(aes(y = RAM, color = "RAM")) +
+  labs(x = "Time Passed (seconds)", y = "Usage (%)", color = "Metric") +
+  scale_color_manual(values = c("CPU" = "red", "RAM" = "blue")) +
+  ggtitle("CPU and RAM Usage Over Time (Biogeme)") +
+  theme_minimal()
+
+```
+```{r}
+
+# Function to compute and print statistics
+print_stats <- function(data, label) {
+  cat("\n", label, "\n")
+  cat("CPU Statistics:\n")
+  cat("Mean:", mean(data$CPU, na.rm = TRUE), "\n")
+  cat("Median:", median(data$CPU, na.rm = TRUE), "\n")
+  cat("Min:", min(data$CPU, na.rm = TRUE), "\n")
+  cat("Max:", max(data$CPU, na.rm = TRUE), "\n")
+  cat("Variance:", var(data$CPU, na.rm = TRUE), "\n")
+  
+  cat("\nRAM Statistics:\n")
+  cat("Mean:", mean(data$RAM, na.rm = TRUE), "\n")
+  cat("Median:", median(data$RAM, na.rm = TRUE), "\n")
+  cat("Min:", min(data$RAM, na.rm = TRUE), "\n")
+  cat("Max:", max(data$RAM, na.rm = TRUE), "\n")
+  cat("Variance:", var(data$RAM, na.rm = TRUE), "\n")
+}
+
+# Print statistics for Apollo data
+print_stats(data_apollo, "Apollo Data")
+
+# Print statistics for Biogeme data
+print_stats(data_biogeme, "Biogeme Data")
+
+```
+

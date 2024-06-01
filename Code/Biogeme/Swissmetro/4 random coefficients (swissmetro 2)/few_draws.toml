@@ -17,7 +17,7 @@ only_robust_stats = "True" # bool: "True" if only the robust statistics need to 
                            # Rao-Cramer bound are also reported.
 generate_html = "True" # bool: "True" if the HTML file with the results must be
                        # generated.
-generate_pickle = "True" # bool: "True" if the pickle file with the results must be
+generate_pickle = "False" # bool: "True" if the pickle file with the results must be
                          # generated.
 
 [MultiThreading]
@@ -26,7 +26,7 @@ number_of_threads = 0 # int: Number of threads/processors to be used. If the
                       # calculated using cpu_count().
 
 [MonteCarlo]
-number_of_draws = 100 # int: Number of draws for Monte-Carlo integration.
+number_of_draws = 1000 # int: Number of draws for Monte-Carlo integration.
 seed = 0 # int: Seed used for the pseudo-random number generation. It is useful
          # only when each run should generate the exact same result. If 0, a new
          # seed is used at each run.

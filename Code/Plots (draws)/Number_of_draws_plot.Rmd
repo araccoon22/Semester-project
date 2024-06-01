@@ -1,0 +1,60 @@
+---
+title: "Number of draws plot"
+output: html_document
+date: "2024-05-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Number of draws plot for swissmetro:
+
+```{r}
+# Coordinates for Apollo
+x1 <- c(100, 500, 1000, 2000, 5000, 10000)
+y1 <- c(0.6, 2, 3, 6.27, 22.4, 77.27)
+
+# Coordinates for Biogeme
+x2 <- c(100, 500, 1000, 2000, 5000, 10000)
+y2 <- c(1.86, 6, 11.73, 34.88, 66.97, 80.37)
+
+# Tracing the points
+plot(x1, y1, type = "p", col = "red", xlab = "Number of draws", ylab = "Estimation time [min]", main = "Apollo vs Biogeme Estimation time: 1 random coefficient", ylim = c(0, 100), xlim = c(0, 10000))
+points(x2, y2, type = "p", col = "blue")
+
+# Linking the dots
+lines(x1, y1, col = "red")
+lines(x2, y2, col = "blue")
+
+# Ajouter une légende
+legend("topright", legend = c("Apollo", "Biogeme"), col = c("red", "blue"), lty = 1:1, cex = 0.8)
+
+
+```
+
+
+Number of draws plot for swissmetro 2:
+
+```{r}
+# Coordinates for Apollo
+x1 <- c(100, 500, 1000, 2000, 5000, 6000)
+y1 <- c(0.83, 3.14, 5.47, 12.75, 25.6, 43.94)
+
+# Coordinates for Biogeme
+x2 <- c(100, 500, 1000, 2000, 5000, 6000)
+y2 <- c(7.14, 23.95, 49.34, 92.62, 250.59, 297.31)
+
+# Tracing the points
+plot(x1, y1, type = "p", col = "red", xlab = "Number of draws", ylab = "Estimation time [min]", main = "Apollo vs Biogeme Estimation time: 4 random coefficients", ylim = c(0, 400), xlim = c(0, 6500))
+points(x2, y2, type = "p", col = "blue")
+
+# Linking the dots
+lines(x1, y1, col = "red")
+lines(x2, y2, col = "blue")
+
+# Ajouter une légende
+legend("topright", legend = c("Apollo", "Biogeme"), col = c("red", "blue"), lty = 1:1, cex = 0.8)
+
+
+```

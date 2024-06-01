@@ -1,5 +1,5 @@
 ---
-title: "Swissmetro 2 - 500 draws BFGS "
+title: "Swissmetro 2 - 1000 draws BFGS "
 output: html_document
 date: "2024-04-24"
 ---
@@ -111,7 +111,7 @@ set.seed(1)
 ### Set parameters for generating draws
 apollo_draws = list(
   interDrawsType = "halton", #differences btw individuals
-  interNDraws    = 500,
+  interNDraws    = 1000,
   interUnifDraws = c(),
   interNormDraws = c("draws_c", "draws_t", "draws_1", "draws_2"),  #Standard Normal dist draws
   intraDrawsType = "halton",
